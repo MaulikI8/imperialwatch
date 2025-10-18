@@ -8,6 +8,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all website functionality
     initCart();
+    initWishlist();
     initSearch();
     initNewsletter();
     initSmoothScrolling();
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Global cart variables - using localStorage for persistence
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 let cartCount = 0;
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 function initCart() {
     updateCartCount();
@@ -31,6 +33,20 @@ function initCart() {
             e.target.closest('.add-to-cart')) {
             e.preventDefault();
             addToCart(e.target);
+        }
+    });
+}
+
+// Initialize wishlist functionality
+function initWishlist() {
+    updateWishlistCount();
+    
+    // Wishlist functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('wishlist-btn') || 
+            e.target.closest('.wishlist-btn')) {
+            e.preventDefault();
+            toggleWishlist(e.target);
         }
     });
 }
@@ -58,6 +74,9 @@ function addToCart(button) {
     updateCartCount();
     showNotification(`${productName} added to cart!`, 'success');
     
+    // Dispatch event for React components
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+    
     // Add animation to cart icon
     animateCartIcon();
 }
@@ -68,6 +87,49 @@ function updateCartCount() {
     if (cartCountElement) {
         cartCountElement.textContent = cartCount;
         cartCountElement.style.display = cartCount > 0 ? 'block' : 'none';
+    }
+}
+
+// Toggle wishlist item
+function toggleWishlist(button) {
+    const productCard = button.closest('.product-card');
+    const productName = productCard.querySelector('.product-name').textContent;
+    const productPrice = productCard.querySelector('.current-price').textContent;
+    const productImage = productCard.querySelector('.product-image img').src;
+    const productBrand = productCard.querySelector('.product-brand').textContent;
+    
+    const existingItem = favorites.find(item => item.name === productName);
+    
+    if (existingItem) {
+        // Remove from wishlist
+        favorites = favorites.filter(item => item.name !== productName);
+        showNotification('Removed from wishlist', 'info');
+        button.style.color = '#ccc';
+    } else {
+        // Add to wishlist
+        favorites.push({
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            brand: productBrand,
+            description: productCard.querySelector('.product-description')?.textContent || 'Premium luxury timepiece'
+        });
+        showNotification('Added to wishlist', 'success');
+        button.style.color = '#dc3545';
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    updateWishlistCount();
+    
+    // Dispatch event for React components
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+}
+
+// Update wishlist count
+function updateWishlistCount() {
+    const wishlistCountElement = document.getElementById('wishlistCount');
+    if (wishlistCountElement) {
+        wishlistCountElement.textContent = favorites.length;
     }
 }
 

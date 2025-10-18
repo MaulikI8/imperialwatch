@@ -598,6 +598,88 @@
         </div>
         </footer>
 
+    <!-- React CDN for dynamic components -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <script src="../JS/home.js"></script>
+    
+    <!-- React Components -->
+    <script type="text/babel">
+        // React Cart Counter Component
+        const CartCounter = () => {
+            const [cartCount, setCartCount] = React.useState(0);
+            
+            React.useEffect(() => {
+                const updateCount = () => {
+                    const items = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    const count = items.reduce((total, item) => total + item.quantity, 0);
+                    setCartCount(count);
+                };
+                
+                updateCount();
+                window.addEventListener('cartUpdated', updateCount);
+                return () => window.removeEventListener('cartUpdated', updateCount);
+            }, []);
+            
+            return React.createElement('span', { 
+                className: 'react-cart-count',
+                style: { 
+                    display: cartCount > 0 ? 'inline' : 'none',
+                    backgroundColor: '#dc3545',
+                    color: 'white',
+                    borderRadius: '50%',
+                    padding: '2px 6px',
+                    fontSize: '0.8rem',
+                    marginLeft: '5px'
+                }
+            }, cartCount);
+        };
+        
+        // React Wishlist Counter Component
+        const WishlistCounter = () => {
+            const [wishlistCount, setWishlistCount] = React.useState(0);
+            
+            React.useEffect(() => {
+                const updateCount = () => {
+                    const items = JSON.parse(localStorage.getItem('favorites')) || [];
+                    setWishlistCount(items.length);
+                };
+                
+                updateCount();
+                window.addEventListener('wishlistUpdated', updateCount);
+                return () => window.removeEventListener('wishlistUpdated', updateCount);
+            }, []);
+            
+            return React.createElement('span', { 
+                className: 'react-wishlist-count',
+                style: { 
+                    display: wishlistCount > 0 ? 'inline' : 'none',
+                    backgroundColor: '#dc3545',
+                    color: 'white',
+                    borderRadius: '50%',
+                    padding: '2px 6px',
+                    fontSize: '0.8rem',
+                    marginLeft: '5px'
+                }
+            }, wishlistCount);
+        };
+        
+        // Initialize React components when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render cart counter
+            const cartCountElement = document.getElementById('cartCount');
+            if (cartCountElement) {
+                ReactDOM.render(React.createElement(CartCounter), cartCountElement);
+            }
+            
+            // Render wishlist counter
+            const wishlistCountElement = document.getElementById('wishlistCount');
+            if (wishlistCountElement) {
+                ReactDOM.render(React.createElement(WishlistCounter), wishlistCountElement);
+            }
+        });
+    </script>
 </body>
 </html>

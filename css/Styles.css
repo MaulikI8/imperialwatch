@@ -609,6 +609,7 @@ p {
     color: #1a1a1a !important;
     text-shadow: none !important;
     transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3) !important;
 }
 
 .hero-features {
