@@ -72,9 +72,9 @@
                     <!-- User account actions and cart -->
                     <div class="user-section">
                         <div class="user-actions">
-                            <a href="#" class="user-action">
+                            <a href="../pages/login.html" class="user-action" id="accountLink">
                                 <i class="icon-user"></i>
-                                <span>Account</span>
+                                <span id="accountText">Account</span>
                             </a>
                             <a href="../pages/Favorites.html" class="user-action">
                                 <i class="icon-heart"></i>
@@ -874,6 +874,20 @@
         
         // Initialize React components when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in and update account link
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const accountLink = document.getElementById('accountLink');
+            const accountText = document.getElementById('accountText');
+            
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                accountText.textContent = user.name.split(' ')[0]; // Show first name
+                accountLink.title = `Logged in as ${user.name}`;
+            } else {
+                accountText.textContent = 'Account';
+                accountLink.title = 'Login or Register';
+            }
+            
             // Render cart counter
             const cartCountElement = document.getElementById('cartCount');
             if (cartCountElement) {
