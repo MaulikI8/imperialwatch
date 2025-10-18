@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for SEO and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - Imperial Watches</title>
+    <meta name="description" content="View your saved favorite watches at Imperial Watches. Build your wishlist of luxury timepieces.">
+    
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/favorites-styles.css">
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Header with top bar and main navigation -->
+    <header class="modern-header">
+        <!-- Top bar with contact info and quick links -->
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <!-- Contact information for trust building -->
+                    <div class="contact-info">
+                        <span><i class="icon-phone"></i> +1 (555) 123-4567</span>
+                        <span><i class="icon-email"></i> support@imperialwatches.com</span>
+                        <span><i class="icon-shipping"></i> Free Worldwide Shipping</span>
+                    </div>
+                    <!-- Quick action links for better UX -->
+                    <div class="header-actions">
+                        <a href="#" class="header-link">Track Order</a>
+                        <a href="#" class="header-link">Store Locator</a>
+                        <a href="#" class="header-link">Customer Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main navigation with logo, search, and user actions -->
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Brand logo section -->
+                    <div class="logo-section">
+                        <a href="../html/WATCHthis.html" class="brand-logo">
+                            <div class="logo-icon"></div>
+                            <div class="logo-text">
+                                <span class="brand-name">Imperial</span>
+                                <span class="brand-tagline">Watches</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Advanced search functionality -->
+                    <div class="search-section">
+                        <div class="advanced-search">
+                            <select class="search-category">
+                                <option>All Categories</option>
+                                <option>Luxury Watches</option>
+                                <option>Smart Watches</option>
+                                <option>Vintage Watches</option>
+                                <option>Sports Watches</option>
+                            </select>
+                            <input type="text" placeholder="Search for watches, brands, models..." class="search-input">
+                            <button class="search-button">
+                                <i class="icon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- User account actions and cart -->
+                    <div class="user-section">
+                        <div class="user-actions">
+                            <a href="#" class="user-action">
+                                <i class="icon-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="Favorites.html" class="user-action active">
+                                <i class="icon-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="badge" id="wishlistCount">3</span>
+                            </a>
+                            <a href="Cart.html" class="user-action cart-action">
+                                <i class="icon-cart"></i>
+                                <span>Cart</span>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Category navigation -->
+        <nav class="category-navigation">
+            <div class="container">
+                <ul class="category-menu">
+                    <li><a href="../html/WATCHthis.html" class="category-link">Home</a></li>
+                    <li><a href="../pages/Product.html" class="category-link">All Watches</a></li>
+                    <li><a href="#" class="category-link">Luxury Brands</a></li>
+                    <li><a href="#" class="category-link">Smart Watches</a></li>
+                    <li><a href="#" class="category-link">Vintage Collection</a></li>
+                    <li><a href="#" class="category-link">Sale</a></li>
+                    <li><a href="../pages/About-us.html" class="category-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Favorites Page Content -->
+    <main class="favorites-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <span>My Favorites</span>
+                </div>
+                <h1 class="page-title">My Favorites</h1>
+                <p class="page-subtitle">Your saved luxury timepieces</p>
+            </div>
+
+            <!-- Favorites Content -->
+            <div class="favorites-content">
+                <!-- Empty state (hidden when items exist) -->
+                <div class="empty-favorites" id="emptyFavorites">
+                    <div class="empty-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>No favorites yet</h3>
+                    <p>Start building your collection by adding watches to your favorites</p>
+                    <a href="../pages/Product.html" class="btn-primary">Browse Watches</a>
+                </div>
+
+                <!-- Favorites Grid -->
+                <div class="favorites-grid" id="favoritesGrid">
+                    <!-- Favorite items will be populated by JavaScript -->
+                </div>
+
+                <!-- Favorites Actions -->
+                <div class="favorites-actions" id="favoritesActions" style="display: none;">
+                    <div class="actions-left">
+                        <button class="btn-secondary" id="clearAllFavorites">Clear All</button>
+                        <button class="btn-secondary" id="selectAllFavorites">Select All</button>
+                    </div>
+                    <div class="actions-right">
+                        <button class="btn-primary" id="addSelectedToCart">Add Selected to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Section -->
+            <section class="recommended-section">
+                <div class="section-header">
+                    <h2>You might also like</h2>
+                    <p>Based on your favorites</p>
+                </div>
+                <div class="recommended-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="../images/rolex.jpg" alt="Rolex Submariner" loading="lazy">
+                            <div class="product-actions">
+                                <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Rolex</div>
+                            <h3 class="product-name">Submariner</h3>
+                            <div class="product-price">
+                                <span class="current-price">$1,700,000</span>
+                            </div>
+                            <div class="product-actions-bottom">
+                                <button class="btn-primary">Buy Now</button>
+                                <button class="btn-secondary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="../images/Daytona.jpg" alt="Rolex Daytona" loading="lazy">
+                            <div class="product-actions">
+                                <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Rolex</div>
+                            <h3 class="product-name">Daytona</h3>
+                            <div class="product-price">
+                                <span class="current-price">$2,500,000</span>
+                            </div>
+                            <div class="product-actions-bottom">
+                                <button class="btn-primary">Buy Now</button>
+                                <button class="btn-secondary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="../images/Seiko.jpg" alt="Seiko Marinemaster" loading="lazy">
+                            <div class="product-actions">
+                                <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Seiko</div>
+                            <h3 class="product-name">Marinemaster</h3>
+                            <div class="product-price">
+                                <span class="current-price">$65,000</span>
+                            </div>
+                            <div class="product-actions-bottom">
+                                <button class="btn-primary">Buy Now</button>
+                                <button class="btn-secondary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">
+                            <span class="brand-name">Imperial</span>
+                            <span class="brand-tagline">Watches</span>
+                        </div>
+                    </div>
+                    <p>Your premier destination for luxury timepieces. Crafted with precision, designed for elegance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="../pages/Product.html">All Watches</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Smart Watches</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>support@imperialwatches.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>123 Luxury Avenue, New York, NY 10001</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- React CDN for dynamic components -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- JavaScript files -->
+    <script src="../JS/home.js"></script>
+    <script src="../JS/favorites-page.js"></script>
+</body>
+</html>

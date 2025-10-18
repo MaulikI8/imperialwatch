@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for SEO and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Imperial Watches</title>
+    <meta name="description" content="Complete your luxury watch purchase securely at Imperial Watches.">
+    
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/checkout-styles.css">
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Header with top bar and main navigation -->
+    <header class="modern-header">
+        <!-- Top bar with contact info and quick links -->
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <!-- Contact information for trust building -->
+                    <div class="contact-info">
+                        <span><i class="icon-phone"></i> +1 (555) 123-4567</span>
+                        <span><i class="icon-email"></i> support@imperialwatches.com</span>
+                        <span><i class="icon-shipping"></i> Free Worldwide Shipping</span>
+                    </div>
+                    <!-- Quick action links for better UX -->
+                    <div class="header-actions">
+                        <a href="#" class="header-link">Track Order</a>
+                        <a href="#" class="header-link">Store Locator</a>
+                        <a href="#" class="header-link">Customer Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main navigation with logo, search, and user actions -->
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Brand logo section -->
+                    <div class="logo-section">
+                        <a href="../html/WATCHthis.html" class="brand-logo">
+                            <div class="logo-icon"></div>
+                            <div class="logo-text">
+                                <span class="brand-name">Imperial</span>
+                                <span class="brand-tagline">Watches</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Advanced search functionality -->
+                    <div class="search-section">
+                        <div class="advanced-search">
+                            <select class="search-category">
+                                <option>All Categories</option>
+                                <option>Luxury Watches</option>
+                                <option>Smart Watches</option>
+                                <option>Vintage Watches</option>
+                                <option>Sports Watches</option>
+                            </select>
+                            <input type="text" placeholder="Search for watches, brands, models..." class="search-input">
+                            <button class="search-button">
+                                <i class="icon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- User account actions and cart -->
+                    <div class="user-section">
+                        <div class="user-actions">
+                            <a href="#" class="user-action">
+                                <i class="icon-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="Favorites.html" class="user-action">
+                                <i class="icon-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="badge" id="wishlistCount">3</span>
+                            </a>
+                            <a href="Cart.html" class="user-action cart-action">
+                                <i class="icon-cart"></i>
+                                <span>Cart</span>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Page Content -->
+    <main class="checkout-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <a href="Cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout</span>
+                </div>
+                <h1 class="page-title">Checkout</h1>
+                <p class="page-subtitle">Complete your luxury watch purchase</p>
+            </div>
+
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+            <!-- Checkout Content -->
+            <div class="checkout-content">
+                <div class="checkout-main">
+                    <!-- Step 1: Shipping Information -->
+                    <div class="checkout-step" id="step1">
+                        <div class="step-header">
+                            <h2>Shipping Information</h2>
+                            <p>Enter your delivery details</p>
+                        </div>
+                        
+                        <form class="checkout-form" id="shippingForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Province *</label>
+                                    <input type="text" id="state" name="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode">ZIP/Postal Code *</label>
+                                    <input type="text" id="zipCode" name="zipCode" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <select id="country" name="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="CH">Switzerland</option>
+                                    <option value="JP">Japan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="saveAddress">
+                                    <span class="checkmark"></span>
+                                    Save this address for future orders
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment Information -->
+                    <div class="checkout-step" id="step2" style="display: none;">
+                        <div class="step-header">
+                            <h2>Payment Information</h2>
+                            <p>Secure payment processing</p>
+                        </div>
+                        
+                        <form class="checkout-form" id="paymentForm">
+                            <div class="payment-methods">
+                                <div class="payment-method active" data-method="card">
+                                    <input type="radio" id="cardPayment" name="paymentMethod" value="card" checked>
+                                    <label for="cardPayment">
+                                        <i class="fas fa-credit-card"></i>
+                                        Credit/Debit Card
+                                    </label>
+                                </div>
+                                <div class="payment-method" data-method="paypal">
+                                    <input type="radio" id="paypalPayment" name="paymentMethod" value="paypal">
+                                    <label for="paypalPayment">
+                                        <i class="fab fa-paypal"></i>
+                                        PayPal
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-details" id="cardDetails">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number *</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiryDate">Expiry Date *</label>
+                                        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV *</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardName">Name on Card *</label>
+                                    <input type="text" id="cardName" name="cardName">
+                                </div>
+                            </div>
+                            
+                            <div class="payment-details" id="paypalDetails" style="display: none;">
+                                <div class="paypal-info">
+                                    <p>You will be redirected to PayPal to complete your payment securely.</p>
+                                    <button type="button" class="btn-paypal">
+                                        <i class="fab fa-paypal"></i>
+                                        Logic in with PayPal
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 3: Review Order -->
+                    <div class="checkout-step" id="step3" style="display: none;">
+                        <div class="step-header">
+                            <h2>Review Your Order</h2>
+                            <p>Please review your order details before confirming</p>
+                        </div>
+                        
+                        <div class="order-review">
+                            <div class="review-section">
+                                <h3>Shipping Address</h3>
+                                <div class="review-content" id="shippingReview">
+                                    <!-- Shipping details will be populated -->
+                                </div>
+                            </div>
+                            
+                            <div class="review-section">
+                                <h3>Payment Method</h3>
+                                <div class="review-content" id="paymentReview">
+                                    <!-- Payment details will be populated -->
+                                </div>
+                            </div>
+                            
+                            <div class="review-section">
+                                <h3>Order Items</h3>
+                                <div class="order-items" id="orderItems">
+                                    <!-- Order items will be populated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Order Complete -->
+                    <div class="checkout-step" id="step4" style="display: none;">
+                        <div class="step-header">
+                            <h2>Order Complete!</h2>
+                            <p>Thank you for your purchase</p>
+                        </div>
+                        
+                        <div class="order-success">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Your order has been placed successfully</h3>
+                            <p>Order Number: <strong id="orderNumber">#IW-2025-001</strong></p>
+                            <p>You will receive a confirmation email shortly.</p>
+                            
+                            <div class="success-actions">
+                                <a href="../html/WATCHthis.html" class="btn-primary">Continue Shopping</a>
+                                <a href="#" class="btn-secondary">Track Order</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="checkout-navigation">
+                        <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                        <button type="button" class="btn-primary" id="nextBtn">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="order-summary">
+                    <div class="summary-header">
+                        <h3>Order Summary</h3>
+                    </div>
+                    
+                    <div class="summary-items" id="summaryItems">
+                        <!-- Order items will be populated -->
+                    </div>
+                    
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="summarySubtotal">$0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="free">FREE</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span id="summaryTax">$0</span>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="summaryTotal">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="security-badges">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>SSL Secured</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>PCI Compliant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">
+                            <span class="brand-name">Imperial</span>
+                            <span class="brand-tagline">Watches</span>
+                        </div>
+                    </div>
+                    <p>Your premier destination for luxury timepieces. Crafted with precision, designed for elegance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="../pages/Product.html">All Watches</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Smart Watches</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>support@imperialwatches.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>123 Luxury Avenue, New York, NY 10001</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- React CDN for dynamic components -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- JavaScript files -->
+    <script src="../JS/home.js"></script>
+    <script src="../JS/checkout-page.js"></script>
+</body>
+</html>

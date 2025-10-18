@@ -1,0 +1,335 @@
+/* 
+ * Favorites Page Styles - Imperial Watches
+ * College project by Maulik Joshi and team
+ */
+
+/* Page Header Styles */
+.page-header {
+    padding: 40px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    margin-bottom: 40px;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 8px;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Favorites Content */
+.favorites-content {
+    min-height: 400px;
+    margin-bottom: 60px;
+}
+
+/* Empty State */
+.empty-favorites {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.empty-favorites h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.empty-favorites p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Favorites Grid */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.favorite-item {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.favorite-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-item.selected {
+    border: 2px solid #007bff;
+    background: #f8f9ff;
+}
+
+.favorite-checkbox {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    accent-color: #007bff;
+}
+
+.favorite-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.favorite-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.favorite-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.favorite-details {
+    flex: 1;
+}
+
+.favorite-brand {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.favorite-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.favorite-description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.favorite-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.favorite-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.favorite-actions .btn-primary,
+.favorite-actions .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: auto;
+}
+
+.remove-favorite {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove-favorite:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Favorites Actions */
+.favorites-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.actions-left,
+.actions-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Recommended Section */
+.recommended-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+.recommended-section .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.recommended-section .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.recommended-section .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.recommended-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .favorites-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .favorite-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .favorite-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .favorites-actions {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .actions-left,
+    .actions-right {
+        justify-content: center;
+    }
+    
+    .recommended-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 30px 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .favorite-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .favorite-actions .btn-primary,
+    .favorite-actions .btn-secondary {
+        width: 100%;
+    }
+}
+
+/* Animation for adding/removing favorites */
+.favorite-item.adding {
+    animation: fadeInUp 0.5s ease;
+}
+
+.favorite-item.removing {
+    animation: fadeOutDown 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
