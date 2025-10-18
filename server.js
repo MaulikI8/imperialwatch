@@ -330,6 +330,34 @@ app.get('/api/search', (req, res) => {
     });
 });
 
+// Get all customers (for login verification)
+app.get('/api/customers', (req, res) => {
+    db.all('SELECT * FROM customers ORDER BY created_at DESC', (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json(rows);
+    });
+});
+
+// Get customer by email
+app.get('/api/customers/:email', (req, res) => {
+    const { email } = req.params;
+    
+    db.get('SELECT * FROM customers WHERE email = ?', [email], (err, row) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        if (!row) {
+            res.status(404).json({ error: 'Customer not found' });
+            return;
+        }
+        res.json(row);
+    });
+});
+
 // Create new customer
 app.post('/api/customers', (req, res) => {
     const { name, email, phone, address } = req.body;
@@ -339,14 +367,27 @@ app.post('/api/customers', (req, res) => {
         return;
     }
     
-    const query = 'INSERT INTO customers (name, email, phone, address) VALUES (?, ?, ?, ?)';
-    
-    db.run(query, [name, email, phone, address], function(err) {
+    // Check if email already exists
+    db.get('SELECT * FROM customers WHERE email = ?', [email], (err, existingCustomer) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
-        res.json({ id: this.lastID, name, email, phone, address });
+        
+        if (existingCustomer) {
+            res.status(409).json({ error: 'Email already exists' });
+            return;
+        }
+        
+        const query = 'INSERT INTO customers (name, email, phone, address) VALUES (?, ?, ?, ?)';
+        
+        db.run(query, [name, email, phone, address], function(err) {
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            res.json({ id: this.lastID, name, email, phone, address });
+        });
     });
 });
 

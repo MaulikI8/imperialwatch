@@ -1,116 +1,276 @@
-<html>
-<body>
-
-    <title>Imperial watch Login</title>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Imperial Watches</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #e9e9e9;
-}
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e9e9e9;
+            margin: 0;
+            padding: 20px;
+        }
 
-form {
-    background: #1e1e1e;
-    color: #ffffff;
-    border: 1px solid #e6b800;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
-    text-align: center;
-    width: 350px;
-}
+        .login-container {
+            background: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #e6b800;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
 
-h1 {
-    margin-bottom: 15px;
-    color: #e6b800;
-}
+        h1 {
+            margin-bottom: 30px;
+            color: #e6b800;
+            text-align: center;
+            font-size: 2rem;
+        }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-}
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-.input-field {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #e6b800;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #222;
-    color: #ffffff;
-}
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #e6b800;
+        }
 
-.submit-button {
-    
-    background-color: #e6b800;
-    color: #000000;
-    padding: 10px;
-    border: 1px solid #e6b800;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    display: block;
-    font-weight: bold;
-}
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6b800;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #222;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
 
-.submit-button:hover {
-    background-color: transparent;
-    color: #c99c00;
-}
+        .input-field:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(230, 184, 0, 0.3);
+        }
 
-.action-button {
-    background-color: #1e1e1e;
-    color: #e6b800;
-    padding: 10px;
-    border: 1px solid #e6b800;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    display: block;
-    font-weight: bold;
-}
+        .action-button {
+            background-color: #e6b800;
+            color: #1e1e1e;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-.action-button:hover {
-    background-color: #e6b800;
-    color: black;
-}
+        .action-button:hover {
+            background-color: #ffd700;
+            transform: translateY(-2px);
+        }
 
-a {
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    color: #e6b800;
-    font-weight: bold;
-}
+        .action-button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-a:hover {
-    color: #c99c00;
-}
-</style>
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #e6b800;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            color: #ffd700;
+        }
+
+        #message {
+            display: none;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .loading {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h2 {
+            color: #e6b800;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .demo-info {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e6b800;
+        }
+
+        .demo-info h3 {
+            margin-top: 0;
+            color: #e6b800;
+        }
+
+        .demo-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h2>Imperial Watches</h2>
+        </div>
+        
+        <h1>Welcome Back</h1>
+        
+        <div class="demo-info">
+            <h3>Demo Login</h3>
+            <p>Since this is a demo, you can login with any email that exists in our database.</p>
+            <p><strong>Note:</strong> Password authentication is not yet implemented.</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="input-field" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" class="input-field" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="action-button" id="submitBtn">
+                Login
+            </button>
+        </form>
+
+        <div id="message"></div>
+
+        <div class="links">
+            <a href="register.html">Don't have an account? Register</a><br>
+            <a href="../html/WATCHthis.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            
+            // Get form data
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Logging in...';
+            showMessage('Checking your credentials...', 'loading');
+
+            try {
+                // For demo purposes, we'll check if the email exists in our database
+                // In a real app, you'd verify the password with a proper authentication system
+                
+                // Get all customers to check if email exists
+                const response = await fetch('/api/customers');
+                
+                if (response.ok) {
+                    const customers = await response.json();
+                    const customer = customers.find(c => c.email === email);
+                    
+                    if (customer) {
+                        // Email exists - simulate successful login
+                        showMessage(`Welcome back, ${customer.name}!`, 'success');
+                        
+                        // Store customer info in localStorage for demo
+                        localStorage.setItem('loggedInUser', JSON.stringify(customer));
+                        
+                        // Redirect to home page after 2 seconds
+                        setTimeout(() => {
+                            window.location.href = '../html/WATCHthis.html';
+                        }, 2000);
+                    } else {
+                        showMessage('Email not found. Please register first or check your email address.', 'error');
+                    }
+                } else {
+                    showMessage('Login failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('Login failed. Please check your connection and try again.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = type;
+            messageDiv.style.display = 'block';
+            
+            // Auto-hide success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                showMessage(`Already logged in as ${user.name}`, 'success');
+            }
+        });
+    </script>
 </body>
-<form>
-    <h1>Please Login</h1>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" placeholder="Username or email" class="input-field"><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" class="input-field" placeholder="Password"><br>
-    <input type="submit" value="Login" class="submit-button">
-    <br>
-    <a href="forgot.html"> <button type="button" class="action-button"> Forgot Password</button></a>
-    <p>New user?</p>
-    <a href="register.html" class="action-button"> Register</a>
-    <br>
-    <a href="../html/WATCHthis.html" class="submit-button"> Back to Home</a>
-</form>
-
 </html>

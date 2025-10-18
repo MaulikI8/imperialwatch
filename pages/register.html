@@ -1,94 +1,304 @@
-<html>
-<body>
-
-    <title>Imperial watch Login</title>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Imperial Watches</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #e9e9e9;
-}
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e9e9e9;
+            margin: 0;
+            padding: 20px;
+        }
 
-form {
-    background: #1e1e1e;
-    color: #ffffff;
-    border: 1px solid #e6b800;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
-    text-align: center;
-    width: 350px;
-}
+        .register-container {
+            background: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #e6b800;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
 
-h1 {
-    margin-bottom: 15px;
-    color: #e6b800;
-}
+        h1 {
+            margin-bottom: 30px;
+            color: #e6b800;
+            text-align: center;
+            font-size: 2rem;
+        }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-}
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-.input-field {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #e6b800;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #222;
-    color: #ffffff;
-}
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #e6b800;
+        }
 
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6b800;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #222;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
 
-.action-button {
-    background-color: gold;
-    color: black;
-    padding: 10px;
-    border: 1px solid #e6b800;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    display: block;
-    font-weight: bold;
-}
+        .input-field:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(230, 184, 0, 0.3);
+        }
 
-.action-button:hover {
-    background-color: black;
-    color: gold;
-}
+        .action-button {
+            background-color: #e6b800;
+            color: #1e1e1e;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-a {
-    text-decoration: none;
-    display: block;
-    margin-top: 10px;
-    color: #e6b800;
-    font-weight: bold;
-}
+        .action-button:hover {
+            background-color: #ffd700;
+            transform: translateY(-2px);
+        }
 
-a:hover {
-    color: #c99c00;
-}
-</style>
+        .action-button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #e6b800;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            color: #ffd700;
+        }
+
+        #message {
+            display: none;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .loading {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h2 {
+            color: #e6b800;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="logo">
+            <h2>Imperial Watches</h2>
+        </div>
+        
+        <h1>Create Account</h1>
+        
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="input-field" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <textarea id="address" class="input-field" rows="3" required placeholder="Enter your full address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" class="input-field" required minlength="6">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password *</label>
+                <input type="password" id="confirmPassword" class="input-field" required>
+            </div>
+
+            <button type="submit" class="action-button" id="submitBtn">
+                Create Account
+            </button>
+        </form>
+
+        <div id="message"></div>
+
+        <div class="links">
+            <a href="login.html">Already have an account? Login</a><br>
+            <a href="../html/WATCHthis.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const messageDiv = document.getElementById('message');
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value
+            };
+
+            // Validate passwords match
+            if (formData.password !== formData.confirmPassword) {
+                showMessage('Passwords do not match!', 'error');
+                return;
+            }
+
+            // Validate password length
+            if (formData.password.length < 6) {
+                showMessage('Password must be at least 6 characters long!', 'error');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating Account...';
+            showMessage('Creating your account...', 'loading');
+
+            try {
+                // Prepare data for API (remove confirmPassword and combine names)
+                const customerData = {
+                    name: `${formData.firstName} ${formData.lastName}`,
+                    email: formData.email,
+                    phone: formData.phone,
+                    address: formData.address
+                };
+
+                // Make API call to create customer
+                const response = await fetch('/api/customers', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(customerData)
+                });
+
+                if (response.ok) {
+                    const customer = await response.json();
+                    showMessage(`Account created successfully! Welcome ${customer.name}!`, 'success');
+                    
+                    // Clear form
+                    document.getElementById('registerForm').reset();
+                    
+                    // Redirect to login after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    const error = await response.json();
+                    showMessage(`Registration failed: ${error.error}`, 'error');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showMessage('Registration failed. Please check your connection and try again.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = type;
+            messageDiv.style.display = 'block';
+            
+            // Auto-hide success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Real-time password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#e6b800';
+            }
+        });
+    </script>
 </body>
-<form>
-    <h1>Please Register</h1>
-    <label for="username">Email:</label><br>
-    <input type="text" id="username" placeholder="Username or email" class="input-field"><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" class="input-field" placeholder="Password"><br>
-    <label for="password">Confrim password:</label><br>
-    <input type="password" id="password" class="input-field" placeholder="Confrim password"><br>
-    <a class="action-button"> Register</a> <br>
-    <a href="../pages/login.html" class="input-field">Already have an account? Login</a>
-</form>
-
 </html>
