@@ -1,38 +1,36 @@
 # Imperial Watches - Luxury E-commerce Website
 
-![Imperial Watches](https://img.shields.io/badge/Status-Live-brightgreen) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+## Project Overview
 
-## 🎯 Project Overview
+Imperial Watches is a luxury e-commerce website for high-end timepieces from brands like Rolex, Omega, and Patek Philippe. This was developed as a college group project to demonstrate modern web development practices.
 
-**Imperial Watches** is a premium luxury e-commerce website specializing in high-end timepieces from world-renowned brands like Rolex, Omega, Patek Philippe, and more. This project was developed as part of our college curriculum, showcasing modern web development practices and e-commerce functionality.
-
-### 👥 Team Members
+### Team Members
 - **Maulik Joshi** - Project Lead & Frontend Developer
 - **Team Member 2** - Frontend Developer & UI/UX Designer  
 - **Team Member 3** - Frontend Developer & Design Assistant
 
-## ✨ Key Features
+## Key Features
 
-### 🛍️ E-commerce Functionality
-- **Product Catalog** - Comprehensive watch collection with filtering and sorting
-- **Shopping Cart** - Persistent cart with localStorage integration
-- **Wishlist** - Save favorite watches for later
-- **Search System** - Advanced search with category filtering
-- **Quick View** - Modal popups for quick product details
+### E-commerce Functionality
+- Product catalog with filtering and sorting
+- Shopping cart with localStorage integration
+- Wishlist functionality
+- Search system with category filtering
+- Quick view modals for product details
 
-### 🎨 Design & User Experience
-- **Responsive Design** - Mobile-first approach with perfect mobile/tablet/desktop compatibility
-- **Premium Animations** - Smooth transitions, hover effects, and scroll-triggered animations
-- **Modern UI** - Clean, luxury-focused design with glass morphism effects
-- **Accessibility** - ARIA labels, keyboard navigation, and screen reader support
+### Design & User Experience
+- Responsive design for mobile, tablet, and desktop
+- Smooth animations and hover effects
+- Clean, modern UI design
+- Accessibility features with ARIA labels
 
-### 🚀 Technical Features
-- **Pure HTML/CSS/JS** - No frameworks, showcasing vanilla web technologies
-- **Performance Optimized** - Lazy loading, optimized images, and efficient CSS
-- **SEO Ready** - Semantic HTML, meta tags, and structured data
-- **Cross-browser Compatible** - Works on all modern browsers
+### Technical Features
+- Pure HTML/CSS/JavaScript (no frameworks)
+- Performance optimized with lazy loading
+- SEO ready with semantic HTML
+- Cross-browser compatible
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Imperial-Watches/
@@ -55,20 +53,19 @@ Imperial-Watches/
 └── README.md                   # This file
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: CSS Grid, Flexbox, CSS Animations, Custom Properties
-- **Icons**: Font Awesome 6.5.1
-- **Fonts**: Google Fonts (Playfair Display, Inter)
-- **Storage**: LocalStorage for cart persistence (no database required)
-- **Responsive**: Mobile-first CSS with media queries
+- HTML5, CSS3, JavaScript (ES6+)
+- CSS Grid, Flexbox, CSS Animations
+- Font Awesome 6.5.1 for icons
+- Google Fonts (Playfair Display, Inter)
+- LocalStorage for cart persistence
+- Mobile-first responsive design
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - A modern web browser (Chrome, Firefox, Safari, Edge)
-- A local web server (optional, for development)
 
 ### Installation
 1. Clone the repository:
@@ -77,121 +74,53 @@ Imperial-Watches/
    cd imperialwatch
    ```
 
-2. Open the project:
-   - **Option 1**: Open `html/WATCHthis.html` directly in your browser
-   - **Option 2**: Use a local server (recommended):
-     ```bash
-     # Using Python
-     python -m http.server 8000
-     
-     # Using Node.js
-     npx http-server
-     ```
+2. Open `html/WATCHthis.html` directly in your browser
 
-3. Navigate to `http://localhost:8000` in your browser
+## Pages Overview
 
-## 📱 Pages Overview
-
-### 🏠 Homepage (`WATCHthis.html`)
-- Hero section with compelling call-to-action
+### Homepage (`WATCHthis.html`)
+- Hero section with call-to-action
 - Featured products showcase
 - Luxury collection highlights
 - Customer testimonials
 - Newsletter signup
-- Trust indicators and brand partnerships
 
-### 🛍️ Product Catalog (`pages/Product.html`)
-- Advanced filtering system (price, brand, category)
-- Sorting options (price, popularity, newest)
+### Product Catalog (`pages/Product.html`)
+- Filtering system (price, brand, category)
+- Sorting options
 - Grid/list view toggle
-- Product comparison feature
 - Quick view modals
-- Pagination and load more functionality
 
-### 👥 About Us (`pages/About-us.html`)
-- Company history and heritage
+### About Us (`pages/About-us.html`)
+- Company history
 - Team member profiles
-- Core values and mission
-- Achievement highlights
-- Contact information and consultation forms
+- Contact information
 
-### 📰 Blog (`pages/Blog.html`)
+### Blog (`pages/Blog.html`)
 - Featured articles
 - Category filtering
 - Article search functionality
-- Related articles suggestions
-- Social sharing options
 
-## 🎨 Design Philosophy
-
-Our design approach focuses on:
-
-- **Luxury Aesthetics** - Premium color schemes, elegant typography, and sophisticated layouts
-- **User-Centric** - Intuitive navigation, clear information hierarchy, and seamless interactions
-- **Performance** - Fast loading times, smooth animations, and optimized assets
-- **Accessibility** - Inclusive design that works for all users
-
-## 🔧 Customization
-
-### Adding New Products
-1. Add product images to the `images/` directory
-2. Update the product grid in `html/WATCHthis.html`
-3. Add corresponding CSS classes in `css/Styles.css`
-
-### Modifying Colors
-Update CSS custom properties in `css/Styles.css`:
-```css
-:root {
-    --primary-color: #your-color;
-    --secondary-color: #your-color;
-    --accent-color: #your-color;
-}
-```
-
-### Adding New Pages
-1. Create HTML file in appropriate directory
-2. Create corresponding CSS file
-3. Add JavaScript functionality if needed
-4. Update navigation links
-
-## 📊 Performance Metrics
-
-- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
-- **Page Load Time**: < 2 seconds
-- **Mobile Responsiveness**: 100% compatible
-- **Cross-browser Support**: Chrome, Firefox, Safari, Edge
-
-## 🤝 Contributing
-
-This is a college project, but suggestions and improvements are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📝 Learning Outcomes
+## Learning Outcomes
 
 Through this project, we learned:
 
-- **Frontend Development** - HTML5 semantic structure, CSS3 advanced features, JavaScript ES6+
-- **E-commerce Concepts** - Shopping cart logic, product filtering, user experience design
-- **Responsive Design** - Mobile-first approach, flexible layouts, cross-device compatibility
-- **Performance Optimization** - Image optimization, lazy loading, efficient CSS/JS
-- **Team Collaboration** - Git workflow, code organization, project management
-- **Client-side Storage** - Using localStorage for data persistence without backend
+- Frontend development with HTML5, CSS3, and JavaScript
+- E-commerce concepts and user experience design
+- Responsive design principles
+- Performance optimization techniques
+- Team collaboration and project management
+- Client-side storage using localStorage
 
-## 📞 Contact
+## Contact
 
 **Project Lead**: Maulik Joshi
-- Email: maulik.joshi@example.com
 - GitHub: [@MaulikI8](https://github.com/MaulikI8)
-- LinkedIn: [Maulik Joshi](https://linkedin.com/in/maulik-joshi)
 
-## 📄 License
+## License
 
-This project is created for educational purposes as part of our college curriculum. All rights reserved.
+This project is created for educational purposes as part of our college curriculum.
 
 ---
 
-**Note**: This website is a demonstration project showcasing modern web development skills. All product images and brand names are used for educational purposes only.
+**Note**: This website is a demonstration project. All product images and brand names are used for educational purposes only.
