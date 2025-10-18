@@ -55,26 +55,69 @@ Imperial-Watches/
 
 ## Technologies Used
 
+### Frontend
 - HTML5, CSS3, JavaScript (ES6+)
+- React 18 for dynamic components
 - CSS Grid, Flexbox, CSS Animations
 - Font Awesome 6.5.1 for icons
 - Google Fonts (Playfair Display, Inter)
 - LocalStorage for cart persistence
 - Mobile-first responsive design
 
+### Backend
+- Node.js with Express.js
+- SQLite3 database
+- REST API endpoints
+- CORS enabled for cross-origin requests
+- JSON data format
+
 ## Getting Started
 
 ### Prerequisites
+- Node.js 14.0.0 or higher
+- npm (comes with Node.js)
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 
 ### Installation
+
+#### Option 1: Full Setup with Database (Recommended)
 1. Clone the repository:
    ```bash
    git clone https://github.com/MaulikI8/imperialwatch.git
    cd imperialwatch
    ```
 
+2. Run the setup script:
+   ```bash
+   node setup.js
+   ```
+
+3. Start the server:
+   ```bash
+   npm start
+   ```
+
+4. Open your browser and visit: `http://localhost:3000`
+
+#### Option 2: Frontend Only
+1. Clone the repository and navigate to the project folder
 2. Open `html/WATCHthis.html` directly in your browser
+
+### Development Mode
+For development with auto-restart:
+```bash
+npm run dev
+```
+
+### API Endpoints
+- `GET /api/products` - Get all watches
+- `GET /api/products/:id` - Get specific watch
+- `GET /api/search?q=query` - Search watches
+- `GET /api/categories` - Get watch categories
+- `GET /api/brands` - Get watch brands
+- `POST /api/customers` - Create customer
+- `POST /api/orders` - Create order
+- `GET /api/stats` - Get statistics
 
 ## Pages Overview
 

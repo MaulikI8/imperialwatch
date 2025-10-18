@@ -659,11 +659,217 @@
                     backgroundColor: '#dc3545',
                     color: 'white',
                     borderRadius: '50%',
-                    padding: '2px 6px',
+                           padding: '2px 6px',
                     fontSize: '0.8rem',
                     marginLeft: '5px'
                 }
             }, wishlistCount);
+        };
+        
+        // React Dynamic Product Carousel Component
+        const ProductCarousel = () => {
+            const [products, setProducts] = React.useState([]);
+            const [currentIndex, setCurrentIndex] = React.useState(0);
+            const [loading, setLoading] = React.useState(true);
+            
+            React.useEffect(() => {
+                // Simulate API call to get products from database
+                fetch('/api/products')
+                    .then(response => response.json())
+                    .then(data => {
+                        setProducts(data);
+                        setLoading(false);
+                    })
+                    .catch(() => {
+                        // Fallback to static data if API not available
+                        const fallbackProducts = [
+                            { id: 1, name: 'Rolex Submariner', brand: 'Rolex', price: '$1,700,000', image: '../images/rolex.jpg' },
+                            { id: 2, name: 'Rolex Daytona', brand: 'Rolex', price: '$2,500,000', image: '../images/Daytona.jpg' },
+                            { id: 3, name: 'Seiko Marinemaster', brand: 'Seiko', price: '$65,000', image: '../images/Seiko.jpg' },
+                            { id: 4, name: 'Apple SmartWatch', brand: 'Apple', price: '$76,500', image: '../images/apple.jpg' }
+                        ];
+                        setProducts(fallbackProducts);
+                        setLoading(false);
+                    });
+            }, []);
+            
+            const nextSlide = () => {
+                setCurrentIndex((prevIndex) => 
+                    prevIndex === products.length - 1 ? 0 : prevIndex + 1
+                );
+            };
+            
+            const prevSlide = () => {
+                setCurrentIndex((prevIndex) => 
+                    prevIndex === 0 ? products.length - 1 : prevIndex - 1
+                );
+            };
+            
+            if (loading) {
+                return React.createElement('div', { 
+                    className: 'react-carousel-loading',
+                    style: { textAlign: 'center', padding: '20px' }
+                }, 'Loading luxury watches...');
+            }
+            
+            const currentProduct = products[currentIndex];
+            
+            return React.createElement('div', { 
+                className: 'react-product-carousel',
+                style: {
+                    background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+                    padding: '40px',
+                    borderRadius: '20px',
+                    textAlign: 'center',
+                    margin: '40px 0'
+                }
+            },
+                React.createElement('h2', { 
+                    style: { marginBottom: '20px', color: '#333' }
+                }, 'Featured Luxury Timepiece'),
+                React.createElement('div', { 
+                    className: 'carousel-content',
+                    style: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }
+                },
+                    React.createElement('button', {
+                        onClick: prevSlide,
+                        style: {
+                            background: '#007bff',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '50%',
+                            width: '40px',
+                            height: '40px',
+                            cursor: 'pointer'
+                        }
+                    }, '←'),
+                    React.createElement('img', {
+                        src: currentProduct.image,
+                        alt: currentProduct.name,
+                        style: {
+                            width: '200px',
+                            height: '200px',
+                            objectFit: 'cover',
+                            borderRadius: '15px'
+                        }
+                    }),
+                    React.createElement('button', {
+                        onClick: nextSlide,
+                        style: {
+                            background: '#007bff',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '50%',
+                            width: '40px',
+                            height: '40px',
+                            cursor: 'pointer'
+                        }
+                    }, '→')
+                ),
+                React.createElement('div', { 
+                    className: 'carousel-info',
+                    style: { marginTop: '20px' }
+                },
+                    React.createElement('h3', { style: { color: '#333', marginBottom: '10px' }}, currentProduct.name),
+                    React.createElement('p', { style: { color: '#666', marginBottom: '10px' }}, currentProduct.brand),
+                    React.createElement('p', { style: { color: '#007bff', fontSize: '1.2rem', fontWeight: 'bold' }}, currentProduct.price)
+                )
+            );
+        };
+        
+        // React Live Statistics Component
+        const LiveStats = () => {
+            const [stats, setStats] = React.useState({
+                customersServed: 0,
+                watchesSold: 0,
+                countriesServed: 0,
+                satisfactionRate: 0
+            });
+            
+            React.useEffect(() => {
+                // Animate numbers on component mount
+                const animateNumbers = () => {
+                    const targetStats = {
+                        customersServed: 15420,
+                        watchesSold: 8930,
+                        countriesServed: 67,
+                        satisfactionRate: 99.8
+                    };
+                    
+                    const duration = 2000; // 2 seconds
+                    const steps = 60;
+                    const stepDuration = duration / steps;
+                    
+                    let currentStep = 0;
+                    const timer = setInterval(() => {
+                        currentStep++;
+                        const progress = currentStep / steps;
+                        
+                        setStats({
+                            customersServed: Math.floor(targetStats.customersServed * progress),
+                            watchesSold: Math.floor(targetStats.watchesSold * progress),
+                            countriesServed: Math.floor(targetStats.countriesServed * progress),
+                            satisfactionRate: (targetStats.satisfactionRate * progress).toFixed(1)
+                        });
+                        
+                        if (currentStep >= steps) {
+                            clearInterval(timer);
+                        }
+                    }, stepDuration);
+                };
+                
+                animateNumbers();
+            }, []);
+            
+            return React.createElement('div', { 
+                className: 'react-live-stats',
+                style: {
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '20px',
+                    padding: '40px',
+                    background: 'white',
+                    borderRadius: '20px',
+                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)'
+                }
+            },
+                React.createElement('div', { 
+                    className: 'stat-item',
+                    style: { textAlign: 'center' }
+                },
+                    React.createElement('div', { 
+                        style: { fontSize: '2.5rem', fontWeight: 'bold', color: '#007bff' }
+                    }, stats.customersServed.toLocaleString()),
+                    React.createElement('p', { style: { color: '#666' }}, 'Customers Served')
+                ),
+                React.createElement('div', { 
+                    className: 'stat-item',
+                    style: { textAlign: 'center' }
+                },
+                    React.createElement('div', { 
+                        style: { fontSize: '2.5rem', fontWeight: 'bold', color: '#28a745' }
+                    }, stats.watchesSold.toLocaleString()),
+                    React.createElement('p', { style: { color: '#666' }}, 'Watches Sold')
+                ),
+                React.createElement('div', { 
+                    className: 'stat-item',
+                    style: { textAlign: 'center' }
+                },
+                    React.createElement('div', { 
+                        style: { fontSize: '2.5rem', fontWeight: 'bold', color: '#dc3545' }
+                    }, stats.countriesServed),
+                    React.createElement('p', { style: { color: '#666' }}, 'Countries Served')
+                ),
+                React.createElement('div', { 
+                    className: 'stat-item',
+                    style: { textAlign: 'center' }
+                },
+                    React.createElement('div', { 
+                        style: { fontSize: '2.5rem', fontWeight: 'bold', color: '#ffc107' }
+                    }, stats.satisfactionRate + '%'),
+                    React.createElement('p', { style: { color: '#666' }}, 'Satisfaction Rate')
+                )
+            );
         };
         
         // Initialize React components when DOM is ready
@@ -678,6 +884,25 @@
             const wishlistCountElement = document.getElementById('wishlistCount');
             if (wishlistCountElement) {
                 ReactDOM.render(React.createElement(WishlistCounter), wishlistCountElement);
+            }
+            
+            // Create containers for new React components
+            const heroSection = document.querySelector('.hero-banner');
+            if (heroSection) {
+                const carouselContainer = document.createElement('div');
+                carouselContainer.id = 'react-carousel-container';
+                heroSection.parentNode.insertBefore(carouselContainer, heroSection.nextSibling);
+                ReactDOM.render(React.createElement(ProductCarousel), carouselContainer);
+            }
+            
+            // Add live stats component before footer
+            const footer = document.querySelector('.modern-footer');
+            if (footer) {
+                const statsContainer = document.createElement('div');
+                statsContainer.id = 'react-stats-container';
+                statsContainer.className = 'container';
+                footer.parentNode.insertBefore(statsContainer, footer);
+                ReactDOM.render(React.createElement(LiveStats), statsContainer);
             }
         });
     </script>
