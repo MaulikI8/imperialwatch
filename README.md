@@ -7,9 +7,9 @@
 **Imperial Watches** is a premium luxury e-commerce website specializing in high-end timepieces from world-renowned brands like Rolex, Omega, Patek Philippe, and more. This project was developed as part of our college curriculum, showcasing modern web development practices and e-commerce functionality.
 
 ### 👥 Team Members
-- **Maulik Joshi** - Project Lead & Full-Stack Developer
+- **Maulik Joshi** - Project Lead & Frontend Developer
 - **Team Member 2** - Frontend Developer & UI/UX Designer  
-- **Team Member 3** - Backend Developer & Database Specialist
+- **Team Member 3** - Frontend Developer & Design Assistant
 
 ## ✨ Key Features
 
@@ -61,7 +61,7 @@ Imperial-Watches/
 - **Styling**: CSS Grid, Flexbox, CSS Animations, Custom Properties
 - **Icons**: Font Awesome 6.5.1
 - **Fonts**: Google Fonts (Playfair Display, Inter)
-- **Storage**: LocalStorage for cart persistence
+- **Storage**: LocalStorage for cart persistence (no database required)
 - **Responsive**: Mobile-first CSS with media queries
 
 ## 🚀 Getting Started
@@ -179,6 +179,7 @@ Through this project, we learned:
 - **Responsive Design** - Mobile-first approach, flexible layouts, cross-device compatibility
 - **Performance Optimization** - Image optimization, lazy loading, efficient CSS/JS
 - **Team Collaboration** - Git workflow, code organization, project management
+- **Client-side Storage** - Using localStorage for data persistence without backend
 
 ## 📞 Contact
 
