@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Watches - Imperial Watches Collection</title>
+    <meta name="description" content="Explore our complete collection of luxury watches from Rolex, Omega, Patek Philippe, and more. Authentic timepieces with worldwide shipping and warranty.">
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/product-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <span><i class="icon-phone"></i> Prioritized Support: +1 (555) 123-4567</span>
+                        <span><i class="icon-shipping"></i> Complimentary International Shipping</span>
+                        <span><i class="icon-shield"></i> Authenticity Certificate Included</span>
+                    </div>
+                    <div class="header-actions">
+                        <a href="#" class="header-link">Track Your Order</a>
+                        <a href="#" class="header-link">VIP Services</a>
+                        <a href="#" class="header-link">Expert Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo-section">
+                        <a href="../html/WATCHthis.html" class="brand-logo">
+                            <div class="logo-icon"></div>
+                            <div class="logo-text">
+                                <span class="brand-name">Imperial</span>
+                                <span class="brand-tagline">Watches</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="search-section">
+                        <div class="advanced-search">
+                            <select class="search-category">
+                                <option>All Categories</option>
+                                <option>Luxury Watches</option>
+                                <option>Smart Watches</option>
+                                <option>Vintage Watches</option>
+                                <option>Sports Watches</option>
+                                <option>Dress Watches</option>
+                                <option>Diving Watches</option>
+                            </select>
+                            <input type="text" placeholder="Search for watches, brands, models..." class="search-input">
+                            <button class="search-button">
+                                <i class="icon-search"></i>
+                </button>
+                        </div>
+                    </div>
+                    
+                    <div class="user-section">
+                        <div class="user-actions">
+                            <a href="../pages/login.html" class="user-action">
+                                <i class="icon-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="#" class="user-action">
+                                <i class="icon-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="badge">3</span>
+                            </a>
+                            <a href="#" class="user-action cart-action">
+                                <i class="icon-cart"></i>
+                                <span>Cart</span>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </a>
+             </div>
+             </div>
+            </div>
+            </div>
+        </nav>
+    
+        <nav class="category-navigation">
+            <div class="container">
+                <ul class="category-menu">
+                    <li><a href="../html/WATCHthis.html" class="category-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="category-link">Luxury Brands</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-section">
+                                    <h4>Swiss Brands</h4>
+                                    <a href="#">Rolex</a>
+                                    <a href="#">Omega</a>
+                                    <a href="#">Patek Philippe</a>
+                                    <a href="#">Audemars Piguet</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>French Brands</h4>
+                                    <a href="#">Cartier</a>
+                                    <a href="#">Breguet</a>
+                                    <a href="#">Vacheron Constantin</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>German Brands</h4>
+                                    <a href="#">A. Lange & Söhne</a>
+                                    <a href="#">Glashütte Original</a>
+                                </div>
+                </div>
+                        </div>
+                    </li>
+                    <li><a href="../pages/Product.html" class="category-link active">All Watches</a></li>
+                    <li><a href="#" class="category-link">Smart Watches</a></li>
+                    <li><a href="#" class="category-link">Vintage Collection</a></li>
+                    <li><a href="#" class="category-link">Sale</a></li>
+                    <li><a href="../pages/About-us.html" class="category-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../html/WATCHthis.html">Home</a>
+                <span>/</span>
+                <span>All Watches</span>
+            </div>
+            <h1>Luxury Watch Collection</h1>
+            <p>Discover our curated selection of the world's finest timepieces</p>
+        </div>
+    </section>
+
+    <!-- Product Filters & Grid -->
+    <section class="product-catalog">
+        <div class="container">
+            <div class="catalog-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3>Filters</h3>
+                        <button class="clear-filters">Clear All</button>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-filter">
+                            <input type="range" min="10000" max="5000000" value="5000000" class="price-slider" id="priceSlider">
+                            <div class="price-range">
+                                <span class="price-min">$10,000</span>
+                                <span class="price-max">$5,000,000</span>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Brand</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="rolex"> Rolex <span class="count">(24)</span></label>
+                            <label><input type="checkbox" value="omega"> Omega <span class="count">(18)</span></label>
+                            <label><input type="checkbox" value="patek"> Patek Philippe <span class="count">(12)</span></label>
+                            <label><input type="checkbox" value="cartier"> Cartier <span class="count">(15)</span></label>
+                            <label><input type="checkbox" value="audemars"> Audemars Piguet <span class="count">(8)</span></label>
+                            <label><input type="checkbox" value="apple"> Apple <span class="count">(6)</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="luxury"> Luxury <span class="count">(45)</span></label>
+                            <label><input type="checkbox" value="smart"> Smart Watch <span class="count">(12)</span></label>
+                            <label><input type="checkbox" value="sports"> Sports <span class="count">(20)</span></label>
+                            <label><input type="checkbox" value="dress"> Dress <span class="count">(15)</span></label>
+                            <label><input type="checkbox" value="diving"> Diving <span class="count">(18)</span></label>
+                    </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Features</h4>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="chronograph"> Chronograph <span class="count">(25)</span></label>
+                            <label><input type="checkbox" value="waterproof"> Waterproof <span class="count">(30)</span></label>
+                            <label><input type="checkbox" value="automatic"> Automatic <span class="count">(40)</span></label>
+                            <label><input type="checkbox" value="limited"> Limited Edition <span class="count">(8)</span></label>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Products Grid -->
+                <main class="products-main">
+                    <div class="products-header">
+                        <div class="results-info">
+                            <span class="results-count">Showing 83 luxury watches</span>
+                            <span class="results-sort">Sorted by: Featured</span>
+                        </div>
+                        <div class="view-options">
+                            <div class="sort-dropdown">
+                                <select id="sortSelect">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="newest">Newest First</option>
+                                    <option value="popular">Most Popular</option>
+                                    <option value="rating">Highest Rated</option>
+                                </select>
+                            </div>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid">
+                                    <i class="icon-grid"></i>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <i class="icon-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Product 1 -->
+                        <div class="product-card premium" data-price="2500000" data-brand="rolex" data-category="luxury">
+                            <div class="product-image">
+                                <img src="../images/Daytona.jpg" alt="Rolex Daytona" loading="lazy">
+                                <div class="product-badges">
+                                    <span class="badge limited">Limited Edition</span>
+                                    <span class="badge premium">Premium</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Rolex</div>
+                                <h3 class="product-name">Daytona</h3>
+                                <p class="product-description">Racing-inspired chronograph with precision timing and iconic design</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(127 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$2,500,000</span>
+                                    <span class="price-note">Financing available</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Chronograph</span>
+                                    <span class="feature">Waterproof</span>
+                                    <span class="feature">Automatic</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card" data-price="65000" data-brand="seiko" data-category="sports">
+                            <div class="product-image">
+                                <img src="../images/Seiko.jpg" alt="Seiko Marinemaster" loading="lazy">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Seiko</div>
+                                <h3 class="product-name">Marinemaster Professional</h3>
+                                <p class="product-description">Professional 300M Stainless Steel diving watch</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(89 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$65,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Diving</span>
+                                    <span class="feature">Waterproof</span>
+                                    <span class="feature">Automatic</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card sale" data-price="76500" data-brand="apple" data-category="smart">
+                            <div class="product-image">
+                                <img src="../images/apple.jpg" alt="Apple SmartWatch" loading="lazy">
+                                <div class="product-badges">
+                                    <span class="badge sale">10% OFF</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Apple</div>
+                                <h3 class="product-name">SmartWatch Series 9</h3>
+                                <p class="product-description">Latest smartwatch for fitness and health tracking</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(234 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$76,500</span>
+                                    <span class="original-price">$85,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Smart</span>
+                                    <span class="feature">Fitness</span>
+                                    <span class="feature">Waterproof</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card bestseller" data-price="1700000" data-brand="rolex" data-category="luxury">
+                            <div class="product-image">
+                                <img src="../images/rolex.jpg" alt="Rolex Submariner" loading="lazy">
+                                <div class="product-badges">
+                                    <span class="badge bestseller">Best Seller</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Rolex</div>
+                                <h3 class="product-name">Submariner</h3>
+                                <p class="product-description">Crafted for the deep seas, admired on land</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(456 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$1,700,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Diving</span>
+                                    <span class="feature">Waterproof</span>
+                                    <span class="feature">Automatic</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card" data-price="1200000" data-brand="cartier" data-category="luxury">
+                            <div class="product-image">
+                                <img src="../images/watch1.jpg" alt="Cartier Santos" loading="lazy">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Cartier</div>
+                                <h3 class="product-name">Santos</h3>
+                                <p class="product-description">Aviation-inspired luxury timepiece</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(78 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$1,200,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Luxury</span>
+                                    <span class="feature">Automatic</span>
+                                    <span class="feature">Dress</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card" data-price="850000" data-brand="omega" data-category="sports">
+                            <div class="product-image">
+                                <img src="../images/watch2.jpg" alt="Omega Seamaster" loading="lazy">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Omega</div>
+                                <h3 class="product-name">Seamaster</h3>
+                                <p class="product-description">Professional diving watch with heritage</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(156 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$850,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Diving</span>
+                                    <span class="feature">Waterproof</span>
+                                    <span class="feature">Chronograph</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="product-card" data-price="36000" data-brand="samsung" data-category="smart">
+                            <div class="product-image">
+                                <img src="../images/galaxy.jpg" alt="Samsung Galaxy Watch" loading="lazy">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Samsung</div>
+                                <h3 class="product-name">Galaxy Watch 6</h3>
+                                <p class="product-description">Smart fitness tracking with advanced health features</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(92 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$36,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">Smart</span>
+                                    <span class="feature">Fitness</span>
+                                    <span class="feature">Waterproof</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="product-card" data-price="2100000" data-brand="rolex" data-category="luxury">
+                            <div class="product-image">
+                                <img src="../images/watch3.jpg" alt="Rolex GMT Master II" loading="lazy">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                                    <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                                    <button class="action-btn compare-btn"><i class="icon-compare"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Rolex</div>
+                                <h3 class="product-name">GMT Master II</h3>
+                                <p class="product-description">Pilot's watch with dual time zone functionality</p>
+                                <div class="product-rating">
+                                    <div class="stars">★★★★★</div>
+                                    <span class="rating-count">(203 reviews)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$2,100,000</span>
+                                </div>
+                                <div class="product-features">
+                                    <span class="feature">GMT</span>
+                                    <span class="feature">Automatic</span>
+                                    <span class="feature">Luxury</span>
+                                </div>
+                                <div class="product-actions-bottom">
+                                    <button class="btn-primary">Buy Now</button>
+                                    <button class="btn-secondary add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Load More -->
+                    <div class="load-more-section">
+                        <button class="btn-secondary load-more-btn">Load More Products</button>
+                        <p class="load-more-text">Showing 8 of 83 products</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for exclusive offers, new arrivals, and watch industry insights</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </div>
+                    <div class="form-note">
+                        <small>We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </form>
+            </div>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">
+                            <span class="brand-name">Imperial</span>
+                            <span class="brand-tagline">Watches</span>
+                        </div>
+                    </div>
+                    <p>Your premier destination for luxury timepieces. Crafted with precision, designed for elegance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="../pages/Product.html">All Watches</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Smart Watches</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+            </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>support@imperialwatches.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>123 Luxury Avenue, New York, NY 10001</span>
+                    </div>
+                </div>
+                </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../JS/home.js"></script>
+    <script src="../JS/product-page.js"></script>
+</body>
+    </html>

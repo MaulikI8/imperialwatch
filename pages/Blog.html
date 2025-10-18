@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Journal - Imperial Watches Blog</title>
+    <meta name="description" content="Discover the latest in luxury watch news, reviews, and insights from Imperial Watches. Expert analysis of timepiece trends, brand spotlights, and horological expertise.">
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/blog-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <span><i class="icon-phone"></i> Expert Consultation: +1 (555) 123-4567</span>
+                        <span><i class="icon-shipping"></i> Worldwide Luxury Shipping</span>
+                        <span><i class="icon-shield"></i> Authenticity Guaranteed</span>
+                    </div>
+                    <div class="header-actions">
+                        <a href="#" class="header-link">VIP Services</a>
+                        <a href="#" class="header-link">Investment Advisory</a>
+                        <a href="#" class="header-link">Heritage Tours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo-section">
+                        <a href="../html/WATCHthis.html" class="brand-logo">
+                            <div class="logo-icon"></div>
+                            <div class="logo-text">
+                                <span class="brand-name">Imperial</span>
+                                <span class="brand-tagline">Watches</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="search-section">
+                        <div class="advanced-search">
+                            <select class="search-category">
+                                <option>All Categories</option>
+                                <option>Luxury Watches</option>
+                                <option>Smart Watches</option>
+                                <option>Vintage Watches</option>
+                                <option>Sports Watches</option>
+                            </select>
+                            <input type="text" placeholder="Search for watches, brands, models..." class="search-input">
+                            <button class="search-button">
+                                <i class="icon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="user-section">
+                        <div class="user-actions">
+                            <a href="../pages/login.html" class="user-action">
+                                <i class="icon-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="#" class="user-action">
+                                <i class="icon-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="badge">3</span>
+                            </a>
+                            <a href="#" class="user-action cart-action">
+                                <i class="icon-cart"></i>
+                                <span>Cart</span>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <nav class="category-navigation">
+            <div class="container">
+                <ul class="category-menu">
+                    <li><a href="../html/WATCHthis.html" class="category-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="category-link">Luxury Brands</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-section">
+                                    <h4>Swiss Brands</h4>
+                                    <a href="#">Rolex</a>
+                                    <a href="#">Omega</a>
+                                    <a href="#">Patek Philippe</a>
+                                    <a href="#">Audemars Piguet</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>French Brands</h4>
+                                    <a href="#">Cartier</a>
+                                    <a href="#">Breguet</a>
+                                    <a href="#">Vacheron Constantin</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>German Brands</h4>
+                                    <a href="#">A. Lange & Söhne</a>
+                                    <a href="#">Glashütte Original</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../pages/Product.html" class="category-link">All Watches</a></li>
+                    <li><a href="#" class="category-link">Smart Watches</a></li>
+                    <li><a href="#" class="category-link">Vintage Collection</a></li>
+                    <li><a href="#" class="category-link">Sale</a></li>
+                    <li><a href="../pages/About-us.html" class="category-link">About</a></li>
+                    <li><a href="../pages/Blog.html" class="category-link active">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../html/WATCHthis.html">Home</a>
+                <span>/</span>
+                <span>Blog</span>
+            </div>
+            <h1>Watch Journal</h1>
+            <p>Expert insights, reviews, and the latest in luxury timepieces</p>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image">
+                    <img src="../images/rolex.jpg" alt="Featured Article" loading="lazy">
+                    <div class="article-badge">Featured</div>
+                </div>
+                <div class="featured-text">
+                    <div class="article-meta">
+                        <span class="category">Luxury Watch Review</span>
+                        <span class="date">January 15, 2025</span>
+                        <span class="read-time">8 min read</span>
+                    </div>
+                    <h2>The Evolution of Rolex Submariner: From Tool Watch to Luxury Icon</h2>
+                    <p>Explore the fascinating journey of the Rolex Submariner from its humble beginnings as a professional diving tool to becoming one of the most coveted luxury timepieces in the world. Discover the innovations, milestones, and cultural impact that shaped this legendary watch.</p>
+                    <div class="article-actions">
+                        <a href="#" class="btn-primary">Read Full Article</a>
+                        <button class="btn-secondary share-btn">
+                            <i class="icon-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">All Articles</button>
+                <button class="category-btn" data-category="reviews">Watch Reviews</button>
+                <button class="category-btn" data-category="news">Industry News</button>
+                <button class="category-btn" data-category="guides">Buying Guides</button>
+                <button class="category-btn" data-category="heritage">Heritage</button>
+                <button class="category-btn" data-category="investment">Investment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <main class="blog-main">
+                    <div class="articles-grid">
+                        <!-- Article 1 -->
+                        <article class="article-card" data-category="reviews">
+                            <div class="article-image">
+                                <img src="../images/Daytona.jpg" alt="Patek Philippe Review" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Watch Review</span>
+                                    <span class="date">January 12, 2025</span>
+                                </div>
+                                <h3>Patek Philippe Calatrava: Timeless Elegance in Modern Times</h3>
+                                <p>An in-depth review of the Patek Philippe Calatrava, examining its design philosophy, craftsmanship, and why it remains the quintessential dress watch after decades.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Victoria Sterling</span>
+                                            <span class="author-title">Head of Curations</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">1.2k views</span>
+                                        <span class="likes">24 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 2 -->
+                        <article class="article-card" data-category="news">
+                            <div class="article-image">
+                                <img src="../images/apple.jpg" alt="Smart Watch Trends" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Industry News</span>
+                                    <span class="date">January 10, 2025</span>
+                                </div>
+                                <h3>Smart Watch Revolution: How Technology is Reshaping Timekeeping</h3>
+                                <p>Exploring the latest innovations in smart watch technology and how they're influencing traditional watchmaking, from health monitoring to luxury integrations.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Marcus Heritage</span>
+                                            <span class="author-title">Master Craftsman</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">856 views</span>
+                                        <span class="likes">18 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="article-card" data-category="guides">
+                            <div class="article-image">
+                                <img src="../images/Seiko.jpg" alt="Buying Guide" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Buying Guide</span>
+                                    <span class="date">January 8, 2025</span>
+                                </div>
+                                <h3>Complete Guide to Buying Your First Luxury Watch</h3>
+                                <p>Everything you need to know before investing in your first luxury timepiece, from understanding movements to choosing the right brand and model for your lifestyle.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Alexander Imperial</span>
+                                            <span class="author-title">CEO & Master Horologist</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">2.1k views</span>
+                                        <span class="likes">42 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 4 -->
+                        <article class="article-card" data-category="heritage">
+                            <div class="article-image">
+                                <img src="../images/vintage-watchmaking-tools-stockcake.jpg" alt="Watchmaking Heritage" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Heritage</span>
+                                    <span class="date">January 5, 2025</span>
+                                </div>
+                                <h3>The Art of Hand-Finishing: Traditional Techniques in Modern Watchmaking</h3>
+                                <p>A deep dive into the traditional hand-finishing techniques that separate exceptional timepieces from mass-produced watches, featuring interviews with master craftsmen.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Victoria Sterling</span>
+                                            <span class="author-title">Head of Curations</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">1.5k views</span>
+                                        <span class="likes">31 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 5 -->
+                        <article class="article-card" data-category="investment">
+                            <div class="article-image">
+                                <img src="../images/watch1.jpg" alt="Watch Investment" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Investment</span>
+                                    <span class="date">January 3, 2025</span>
+                                </div>
+                                <h3>Watches as Investment: Which Timepieces Hold Their Value</h3>
+                                <p>An expert analysis of which luxury watches have proven to be solid investments over time, including market trends and factors that influence value retention.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Alexander Imperial</span>
+                                            <span class="author-title">CEO & Master Horologist</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">3.2k views</span>
+                                        <span class="likes">67 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article 6 -->
+                        <article class="article-card" data-category="reviews">
+                            <div class="article-image">
+                                <img src="../images/watch2.jpg" alt="Omega Review" loading="lazy">
+                                <div class="article-overlay">
+                                    <button class="read-btn">
+                                        <i class="icon-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="article-meta">
+                                    <span class="category">Watch Review</span>
+                                    <span class="date">December 30, 2024</span>
+                                </div>
+                                <h3>Omega Speedmaster: The Moon Watch Legacy Continues</h3>
+                                <p>Celebrating the iconic Omega Speedmaster and its connection to space exploration, examining the latest models and their place in horological history.</p>
+                                <div class="article-footer">
+                                    <div class="author-info">
+                                        <img src="https://via.placeholder.com/40x40" alt="Author" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Marcus Heritage</span>
+                                            <span class="author-title">Master Craftsman</span>
+                                        </div>
+                                    </div>
+                                    <div class="article-stats">
+                                        <span class="views">1.8k views</span>
+                                        <span class="likes">38 likes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <!-- Load More -->
+                    <div class="load-more-section">
+                        <button class="btn-secondary load-more-btn">Load More Articles</button>
+                        <p class="load-more-text">Showing 6 of 24 articles</p>
+                    </div>
+                </main>
+                
+                <!-- Blog Sidebar -->
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Newsletter Signup</h3>
+                        <p>Get the latest watch insights delivered to your inbox</p>
+                        <form class="sidebar-newsletter">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Popular Articles</h3>
+                        <div class="popular-articles">
+                            <div class="popular-article">
+                                <img src="../images/watch3.jpg" alt="Popular Article" loading="lazy">
+                                <div class="popular-content">
+                                    <h4>Top 10 Luxury Watches Under $100K</h4>
+                                    <span class="popular-meta">Jan 2, 2025</span>
+                                </div>
+                            </div>
+                            <div class="popular-article">
+                                <img src="../images/galaxy.jpg" alt="Popular Article" loading="lazy">
+                                <div class="popular-content">
+                                    <h4>Smart Watch vs Traditional: Which is Right for You?</h4>
+                                    <span class="popular-meta">Dec 28, 2024</span>
+                                </div>
+                            </div>
+                            <div class="popular-article">
+                                <img src="../images/industry.jpg" alt="Popular Article" loading="lazy">
+                                <div class="popular-content">
+                                    <h4>The Future of Watchmaking Technology</h4>
+                                    <span class="popular-meta">Dec 25, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <div class="category-list">
+                            <a href="#" class="category-link">
+                                <span>Watch Reviews</span>
+                                <span class="count">12</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Industry News</span>
+                                <span class="count">8</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Buying Guides</span>
+                                <span class="count">6</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Heritage</span>
+                                <span class="count">9</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Investment</span>
+                                <span class="count">5</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Tags</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag">Rolex</a>
+                            <a href="#" class="tag">Omega</a>
+                            <a href="#" class="tag">Patek Philippe</a>
+                            <a href="#" class="tag">Luxury</a>
+                            <a href="#" class="tag">Vintage</a>
+                            <a href="#" class="tag">Investment</a>
+                            <a href="#" class="tag">Smart Watch</a>
+                            <a href="#" class="tag">Craftsmanship</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for exclusive offers, new arrivals, and watch industry insights</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </div>
+                    <div class="form-note">
+                        <small>We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">
+                            <span class="brand-name">Imperial</span>
+                            <span class="brand-tagline">Watches</span>
+                        </div>
+                    </div>
+                    <p>Your premier destination for luxury timepieces. Crafted with precision, designed for elegance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="../pages/Product.html">All Watches</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Smart Watches</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>support@imperialwatches.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>123 Luxury Avenue, New York, NY 10001</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/home.js"></script>
+    <script src="../JS/blog-page.js"></script>
+</body>
+</html>

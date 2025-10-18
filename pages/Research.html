@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="Discover luxurious and timeless watches in the Imperial Watch Store. Find your perfect timepiece today!">
+        <!-- Logo and title -->
+        <title> Imperial watches </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width+device-width, device-width=1.0">
+        <link rel="stylesheet" href="..\css\Styles.css" >
+        <script src="../JS/home.js"></script>
+        <style>
+            .main-content {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 9%;
+            }
+        
+            .comparison-container {
+                width: 80%;
+                padding-bottom: 10px;
+                margin: 40px auto;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background-color: bisque;
+            }
+        
+            .comparison-container video {
+                width: 100%;
+                height: auto;
+            }
+
+            .image-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 20px;
+                padding: 20px;
+            }
+        </style>
+        <script>
+            function openOffCanvas() {
+                document.getElementById("offCanvasMenu").style.width = "250px";
+            }
+        
+            function closeOffCanvas() {
+                document.getElementById("offCanvasMenu").style.width = "0";
+            }
+        </script>
+        
+    </head>
+    <body>
+        <!-- Navitagton bar here-->.
+
+        <header>
+            <nav>
+                <button class="off-canvas-button" onclick="openOffCanvas()">
+                Categories
+                </button>
+            
+                <a href="../html/WATCHthis.html" style="text-decoration: none;"> <div class="tagline">Imperial Watch Store</div></a>
+            
+            <div class="nav-bar">
+            <ul>
+                <li> <a id="#homee" href="../html/WATCHthis.html"> Home</a></li>
+                <li> <a id="#Product" href="../pages/Product.html"> Products</a></li>
+                <li> <a id="#Blog" href="../pages/Blog.html"> Blog </a> </li>
+                <li> <a id="#Research" href="../pages/Research.html"> Research </a> </li>
+                <li> <a id="#About" href="../pages/About-us.html"> About Us</a></li>
+
+            </ul>
+            <div class="cart">
+                <a href="cart.html" style="text-decoration: none;">   
+                    <span style="text-decoration: none; margin-left: 40px;" >🛒</span>
+                    <span id="cartCount" class="cart-count"> 0 </span>
+                 </a> <br>
+                 <a href="cart.html" style="text-decoration: none;"><span style="text-decoration: none; color: #ffffff; margin-left: 40px;">cart</span></a>
+             </div>
+             <div class="login">
+                <ul>
+                <li> <a  id="#login" href="../pages/login.html" style="text-decoration: none; color: rgb(255, 255, 255); margin-left: 60px"> Login</a></li>
+            </ul>
+             </div>
+            </div>
+        <div class="search-bar">
+                <input type="text" placeholder="Search for watches">
+                <button class="search-button">Search</button>
+            </div>
+        </nav>
+    
+            
+            <!-- Off-canvas menu -->
+            <div id="offCanvasMenu" class="off-canvas-menu">
+                <a href="javascript:void(0)" class="close-btn" onclick="closeOffCanvas()">&times;</a>
+                <h2>Categories</h2>
+                <a href="Mens.html">Men's Watch</a>
+                <a href="womens.html">Women's Watch</a>
+                <a href="kids.html">Kid's Watch</a>
+                <a href="smartwatches.html">SmartWatches</a>
+                </div>
+            </header>
+            <div class="main-content">
+                <h1 style="text-align: center; background-color: gold; padding-right: 70px; padding-left: 70px;">GET TO KNOW </h1>
+                <p style="background-color: gold; font-size: 30px;">What inspired us to build the website</p>
+                <br>
+                <div class="comparison-container">
+                    <div style="display: flex; justify-content: space-between; gap: 10px;">
+                        <video src="../videos/Rolex_watch.mp4" autoplay loop muted style="width: 100%;"></video>
+                        <video src="../videos/Home-Vid.mp4" autoplay loop muted style="width: 100%;"></video>
+                    </div>
+                    <p style="text-align: center; font-size: 25px; margin-top: 10px;"><em>Our featured video was inspired by the rolex watch store page. Same design but different watch that you'll like better</em></p>
+                </div>
+                </div>
+
+                <div class="comparison-container">
+                <div class="image-container" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                    <img src="../images/nav bar desgin.png" alt="NavBar" style="width: 50%; max-width: 500px; height: auto;">
+                    <img src="../images/breitling-watch-store.jpg" alt="Breitling" style="width: 50%; max-width: 500px; height: auto;">
+                </div>
+                <p style="text-align: center; font-size: 25px; margin-top: 10px"><em>For Navigation Bar we used britling watch store as reference. With the change of navigation bar position and search area position making it look more enhanting</em></p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="image-container" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                    <img src="../images/productpage.png" alt="NavBar" style="width: 50%; max-width: 500px; height: auto;">
+                    <img src="../images/okhar.png" alt="Breitling" style="width: 50%; max-width: 500px; height: auto;">
+                </div>
+                <p style="text-align: center; font-size: 25px; margin-top: 10px"><em>Here we used grid style design for our product grid like in okhar watches</em></p>
+            </div>
+
+       "
+        
+                    
+            
+
+
+            
+
+
+            <footer>
+                <div class="footer-container">
+                    <div class="contactus">
+                        <p style> Email: imperialwatches@gmail.com <br>
+                            Phone: +977 9824727785</p>
+                    </div>
+                    <form name="newsletter" onsubmit=" validateForm()">
+                        <div class="newsletter">
+                            <input style="margin-bottom: 5%; margin-right: 40%;" type="text" name="name" placeholder="your name" required><br>
+                            <input type="email" name="email" placeholder="enter your email" required>
+                            <button type="submit">subscribe</button>
+                        </div>
+                    </form>
+                    
+    
+            <div class="copyright">
+                &copy;2025 Imperial Watch store. All Rights Reserved
+            </div>
+
+
+
+
+    </body>
+    
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic meta tags for SEO and responsive design -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Imperial Watches - Luxury Timepieces & Premium Collections</title>
+        <meta name="description" content="Discover the world's finest luxury watches at Imperial Watches. Authentic Rolex, Omega, Patek Philippe, and exclusive timepieces with worldwide shipping.">
+        
+        <!-- External stylesheets -->
+        <link rel="stylesheet" href="../css/Styles.css">
+        <!-- Google Fonts for elegant typography -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome for professional icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Modern Header with top bar and main navigation -->
+    <header class="modern-header">
+        <!-- Top bar with contact info and quick links -->
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <!-- Contact information for trust building -->
+                    <div class="contact-info">
+                        <span><i class="icon-phone"></i> +1 (555) 123-4567</span>
+                        <span><i class="icon-email"></i> support@imperialwatches.com</span>
+                        <span><i class="icon-shipping"></i> Free Worldwide Shipping</span>
+                    </div>
+                    <!-- Quick action links for better UX -->
+                    <div class="header-actions">
+                        <a href="#" class="header-link">Track Order</a>
+                        <a href="#" class="header-link">Store Locator</a>
+                        <a href="#" class="header-link">Customer Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main navigation with logo, search, and user actions -->
+        <nav class="main-navigation">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Brand logo section -->
+                    <div class="logo-section">
+                        <a href="../html/WATCHthis.html" class="brand-logo">
+                            <div class="logo-icon"></div>
+                            <div class="logo-text">
+                                <span class="brand-name">Imperial</span>
+                                <span class="brand-tagline">Watches</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Advanced search functionality -->
+                    <div class="search-section">
+                        <div class="advanced-search">
+                            <select class="search-category">
+                                <option>All Categories</option>
+                                <option>Luxury Watches</option>
+                                <option>Smart Watches</option>
+                                <option>Vintage Watches</option>
+                                <option>Sports Watches</option>
+                            </select>
+                            <input type="text" placeholder="Search for watches, brands, models..." class="search-input">
+                            <button class="search-button">
+                                <i class="icon-search"></i>
+                </button>
+                        </div>
+                    </div>
+                    
+                    <!-- User account actions and cart -->
+                    <div class="user-section">
+                        <div class="user-actions">
+                            <a href="#" class="user-action">
+                                <i class="icon-user"></i>
+                                <span>Account</span>
+                            </a>
+                            <a href="#" class="user-action">
+                                <i class="icon-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="badge">3</span>
+                            </a>
+                            <a href="#" class="user-action cart-action">
+                                <i class="icon-cart"></i>
+                                <span>Cart</span>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </a>
+                        </div>
+             </div>
+             </div>
+            </div>
+        </nav>
+        
+        <nav class="category-navigation">
+            <div class="container">
+                <ul class="category-menu">
+                    <li><a href="../html/WATCHthis.html" class="category-link active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="category-link">Luxury Brands</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-section">
+                                    <h4>Swiss Brands</h4>
+                                    <a href="#">Rolex</a>
+                                    <a href="#">Omega</a>
+                                    <a href="#">Patek Philippe</a>
+                                    <a href="#">Audemars Piguet</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>French Brands</h4>
+                                    <a href="#">Cartier</a>
+                                    <a href="#">Breguet</a>
+                                    <a href="#">Vacheron Constantin</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>German Brands</h4>
+                                    <a href="#">A. Lange & Söhne</a>
+                                    <a href="#">Glashütte Original</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../pages/Product.html" class="category-link">All Watches</a></li>
+                    <li><a href="#" class="category-link">Smart Watches</a></li>
+                    <li><a href="#" class="category-link">Vintage Collection</a></li>
+                    <li><a href="#" class="category-link">Sale</a></li>
+                    <li><a href="../pages/About-us.html" class="category-link">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Main landing area with compelling CTA -->
+    <section class="hero-banner animate-fadeInUp">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <!-- Background image with overlay for text readability -->
+                <div class="hero-background">
+                    <img src="../images/rolex.jpg" alt="Luxury Watch" class="hero-bg-image">
+                    <div class="hero-overlay"></div>
+                </div>
+                <!-- Hero content with main messaging -->
+                <div class="hero-content">
+                    <div class="container">
+                            <div class="hero-text">
+                            <h1 class="hero-title">Luxury Timepieces</h1>
+                            <h2 class="hero-subtitle">Discover the World's Finest Watches</h2>
+                            <p class="hero-description">From Rolex to Patek Philippe, explore our curated collection of the most prestigious timepieces. Each watch tells a story of craftsmanship, precision, and timeless elegance.</p>
+                            <!-- Primary call-to-action buttons -->
+                            <div class="hero-actions">
+                                <button class="btn-primary btn-large">Shop Collection</button>
+                                <button class="btn-secondary btn-large">View Catalog</button>
+                            </div>
+                            <!-- Trust indicators to build confidence -->
+                            <div class="hero-features">
+                                <div class="feature-item">
+                                    <i class="icon-shield"></i>
+                                    <span>Authentic Guarantee</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="icon-shipping"></i>
+                                    <span>Free Worldwide Shipping</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="icon-lock"></i>
+                                    <span>Secure Payment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <i class="icon-award"></i>
+                    <span>Award Winning</span>
+                </div>
+                <div class="trust-item">
+                    <i class="icon-shield"></i>
+                    <span>Authentic Guarantee</span>
+                </div>
+                <div class="trust-item">
+                    <i class="icon-shipping"></i>
+                    <span>Free Shipping</span>
+                </div>
+                <div class="trust-item">
+                    <i class="icon-star"></i>
+                    <span>5-Star Reviews</span>
+                </div>
+                <div class="trust-item">
+                    <i class="icon-lock"></i>
+                    <span>Secure Payment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products scroll-reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="gradient-text glow-text">Featured Collection</h2>
+                <p>Handpicked luxury timepieces from the world's most prestigious brands</p>
+                <a href="../pages/Product.html" class="view-all-link">View All Products <i class="icon-arrow"></i></a>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card premium premium-hover animate-float">
+                    <div class="product-image">
+                        <img src="../images/Daytona.jpg" alt="Rolex Daytona" loading="lazy">
+                        <div class="product-badges">
+                            <span class="badge limited">Limited Edition</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                            <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Rolex</div>
+                        <h3 class="product-name">Daytona</h3>
+                        <p class="product-description">Racing-inspired chronograph with precision timing</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(127 reviews)</span>
+                     </div>
+                        <div class="product-price">
+                            <span class="current-price">$2,500,000</span>
+                        </div>
+                        <div class="product-actions-bottom">
+                            <button class="btn-primary">Buy Now</button>
+                            <button class="btn-secondary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card premium-hover">
+                    <div class="product-image">
+                        <img src="../images/Seiko.jpg" alt="Seiko Marinemaster" loading="lazy">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                            <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Seiko</div>
+                        <h3 class="product-name">Marinemaster</h3>
+                        <p class="product-description">Professional 300M Stainless Steel</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(89 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$65,000</span>
+                        </div>
+                        <div class="product-actions-bottom">
+                            <button class="btn-primary">Buy Now</button>
+                            <button class="btn-secondary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card sale premium-hover">
+                    <div class="product-image">
+                        <img src="../images/apple.jpg" alt="Apple SmartWatch" loading="lazy">
+                        <div class="product-badges">
+                            <span class="badge sale">10% OFF</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                            <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Apple</div>
+                        <h3 class="product-name">SmartWatch Series 9</h3>
+                        <p class="product-description">Latest smartwatch for fitness and health</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(234 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$76,500</span>
+                            <span class="original-price">$85,000</span>
+                        </div>
+                        <div class="product-actions-bottom">
+                            <button class="btn-primary">Buy Now</button>
+                            <button class="btn-secondary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bestseller premium-hover animate-glow">
+                    <div class="product-image">
+                        <img src="../images/rolex.jpg" alt="Rolex Submariner" loading="lazy">
+                        <div class="product-badges">
+                            <span class="badge bestseller">Best Seller</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="icon-heart"></i></button>
+                            <button class="action-btn quick-view-btn"><i class="icon-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Rolex</div>
+                        <h3 class="product-name">Submariner</h3>
+                        <p class="product-description">Crafted for the deep seas, admired on land</p>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-count">(456 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$1,700,000</span>
+                        </div>
+                        <div class="product-actions-bottom">
+                            <button class="btn-primary">Buy Now</button>
+                            <button class="btn-secondary add-to-cart">Add to Cart</button>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Collection -->
+    <section class="luxury-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Luxury Collection</h2>
+                <p>Discover our most exclusive timepieces from the world's finest watchmakers</p>
+            </div>
+            
+            <div class="luxury-grid">
+                <div class="luxury-item featured">
+                    <div class="luxury-image">
+                        <img src="../images/watch1.jpg" alt="Rolex GMT Master II" loading="lazy">
+                        <div class="luxury-overlay">
+                            <div class="luxury-info">
+                                <h4>Rolex GMT Master II</h4>
+                                <p>Pilot's watch with dual time zone</p>
+                                <div class="luxury-price">$2,100,000</div>
+                                <button class="btn-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="luxury-item">
+                    <div class="luxury-image">
+                        <img src="../images/watch2.jpg" alt="Omega Seamaster" loading="lazy">
+                        <div class="luxury-overlay">
+                            <div class="luxury-info">
+                                <h4>Omega Seamaster</h4>
+                                <p>Professional diving watch</p>
+                                <div class="luxury-price">$850,000</div>
+                                <button class="btn-primary">View Details</button>
+                            </div>
+                        </div>
+              </div>
+                </div>
+                
+                <div class="luxury-item">
+                    <div class="luxury-image">
+                        <img src="../images/watch3.jpg" alt="Cartier Santos" loading="lazy">
+                        <div class="luxury-overlay">
+                            <div class="luxury-info">
+                                <h4>Cartier Santos</h4>
+                                <p>Aviation-inspired luxury</p>
+                                <div class="luxury-price">$1,200,000</div>
+                                <button class="btn-primary">View Details</button>
+                            </div>
+                        </div>
+              </div>
+                </div>
+                
+                <div class="luxury-item">
+                    <div class="luxury-image">
+                        <img src="../images/galaxy.jpg" alt="Samsung Galaxy Watch" loading="lazy">
+                        <div class="luxury-overlay">
+                            <div class="luxury-info">
+                                <h4>Samsung Galaxy Watch 6</h4>
+                                <p>Smart fitness tracking</p>
+                                <div class="luxury-price">$36,000</div>
+                                <button class="btn-primary">View Details</button>
+                            </div>
+                        </div>
+              </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Imperial Watches</h2>
+                <p>We are committed to providing the finest luxury timepieces with exceptional service</p>
+              </div>
+          
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="icon-shield"></i>
+                    </div>
+                    <h3>Authentic Guarantee</h3>
+                    <p>Every watch comes with a certificate of authenticity and comprehensive warranty coverage</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="icon-shipping"></i>
+              </div>
+                    <h3>Free Worldwide Shipping</h3>
+                    <p>Complimentary insured shipping on all orders over $1,000 with tracking and insurance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="icon-tools"></i>
+              </div>
+                    <h3>Expert Service</h3>
+                    <p>Professional maintenance and repair services by certified master watchmakers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="icon-diamond"></i>
+              </div>
+                    <h3>Premium Quality</h3>
+                    <p>Only the finest timepieces from the world's most prestigious and respected brands</p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Trusted by thousands of watch enthusiasts worldwide</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Exceptional quality and service. My Rolex Submariner arrived in perfect condition with all documentation. The authentication process was thorough and professional.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://via.placeholder.com/60x60" alt="Michael Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <span>CEO, TechCorp</span>
+                            <div class="author-rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>The authentication process was thorough and the watch exceeded my expectations. Will definitely purchase again! Outstanding customer service.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://via.placeholder.com/60x60" alt="Sarah Williams">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <span>Investment Banker</span>
+                            <div class="author-rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p>Outstanding collection and professional service. The team helped me find the perfect timepiece for my collection. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://via.placeholder.com/60x60" alt="David Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <span>Watch Collector</span>
+                            <div class="author-rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for exclusive offers, new arrivals, and watch industry insights</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                </div>
+                    <div class="form-note">
+                        <small>We respect your privacy. Unsubscribe at any time.</small>
+                    </div>
+                </form>
+                </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">
+                            <span class="brand-name">Imperial</span>
+                            <span class="brand-tagline">Watches</span>
+                        </div>
+                    </div>
+                    <p>Your premier destination for luxury timepieces. Crafted with precision, designed for elegance.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="icon-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="icon-youtube"></i></a>
+                     </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="../pages/Product.html">All Watches</a></li>
+                        <li><a href="#">Luxury Brands</a></li>
+                        <li><a href="#">Smart Watches</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="icon-email"></i>
+                        <span>support@imperialwatches.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="icon-location"></i>
+                        <span>123 Luxury Avenue, New York, NY 10001</span>
+                    </div>
+        </div>
+    </div>
+    
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </footer>
+
+    <script src="../JS/home.js"></script>
+</body>
+</html>
