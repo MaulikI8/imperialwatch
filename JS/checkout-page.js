@@ -1,13 +1,19 @@
 /* 
- * Checkout Page JavaScript - Imperial Watches
+ * Checkout Page JavaScript - Imperial Watches with Stripe Integration
  * College project by Maulik Joshi and team
- * Features: Multi-step checkout, form validation, React components
+ * Features: Multi-step checkout, form validation, React components, Stripe payments
  */
+
+// Initialize Stripe with your publishable key
+const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY_HERE'); // Replace with your actual publishable key from Stripe Dashboard
+let elements;
+let paymentIntentClientSecret;
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     initCheckoutPage();
     initReactCheckoutComponents();
+    initializeStripeElements();
 });
 
 // Global variables
@@ -455,7 +461,131 @@ function initReactCheckoutComponents() {
 
 // Format price for display
 function formatPrice(price) {
-    return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0     });
+}
+
+// Stripe Integration Functions
+
+// Initialize Stripe Elements
+async function initializeStripeElements() {
+    console.log('Stripe Elements initialized');
+}
+
+// Create payment intent
+async function createPaymentIntent(amount, customerId) {
+    try {
+        const response = await fetch('/api/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: amount,
+                customer_id: customerId
+            })
+        });
+
+        const { client_secret, payment_intent_id } = await response.json();
+        paymentIntentClientSecret = client_secret;
+        
+        // Initialize Stripe Elements with the client secret
+        elements = stripe.elements({ clientSecret: client_secret });
+        
+        // Create payment element
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
+        
+        return payment_intent_id;
+    } catch (error) {
+        console.error('Error creating payment intent:', error);
+        showNotification('Error creating payment. Please try again.', 'error');
+    }
+}
+
+// Handle payment submission
+async function handlePaymentSubmission(customerId, orderItems) {
+    try {
+        const { error } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: `${window.location.origin}/pages/Checkout.html?payment=success`,
+            },
+        });
+
+        if (error) {
+            showNotification(error.message, 'error');
+        } else {
+            // Payment succeeded, confirm with backend
+            await confirmPaymentWithBackend(paymentIntentClientSecret, customerId, orderItems);
+        }
+    } catch (error) {
+        console.error('Error processing payment:', error);
+        showNotification('Payment processing failed. Please try again.', 'error');
+    }
+}
+
+// Confirm payment with backend
+async function confirmPaymentWithBackend(paymentIntentId, customerId, orderItems) {
+    try {
+        const response = await fetch('/api/confirm-payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                payment_intent_id: paymentIntentId,
+                customer_id: customerId,
+                items: orderItems
+            })
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+            showNotification('Payment successful! Order completed.', 'success');
+            // Clear cart and redirect
+            localStorage.removeItem('cartItems');
+            setTimeout(() => {
+                window.location.href = '../html/WATCHthis.html';
+            }, 2000);
+        } else {
+            showNotification('Payment confirmation failed. Please contact support.', 'error');
+        }
+    } catch (error) {
+        console.error('Error confirming payment:', error);
+        showNotification('Payment confirmation failed. Please contact support.', 'error');
+    }
+}
+
+// Enhanced processPayment function with Stripe
+async function processPaymentWithStripe() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (!loggedInUser) {
+        showNotification('Please log in to complete payment.', 'error');
+        return;
+    }
+    
+    const user = JSON.parse(loggedInUser);
+    const total = calculateTotal();
+    
+    try {
+        // Create payment intent
+        const paymentIntentId = await createPaymentIntent(total, user.id);
+        
+        // Prepare order items
+        const orderItems = cartItems.map(item => ({
+            watch_id: item.id || 1,
+            quantity: item.quantity,
+            price: parseFloat(item.price.replace(/[$,]/g, ''))
+        }));
+        
+        // Handle payment submission
+        await handlePaymentSubmission(user.id, orderItems);
+        
+    } catch (error) {
+        console.error('Payment processing error:', error);
+        showNotification('Payment processing failed. Please try again.', 'error');
+    }
 }
 
 // Utility function to show notifications

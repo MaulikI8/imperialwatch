@@ -8,6 +8,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const cors = require('cors');
+const stripe = require('stripe')('sk_test_YOUR_STRIPE_SECRET_KEY_HERE'); // Replace with your actual test key from Stripe Dashboard
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -504,6 +505,171 @@ app.get('/api/stats', (req, res) => {
     }).catch(err => {
         res.status(500).json({ error: err.message });
     });
+});
+
+// Stripe Payment Endpoints
+
+// Create payment intent
+app.post('/api/create-payment-intent', async (req, res) => {
+    try {
+        const { amount, currency = 'usd', customer_id } = req.body;
+        
+        if (!amount || amount <= 0) {
+            return res.status(400).json({ error: 'Invalid amount' });
+        }
+        
+        // Create payment intent
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: Math.round(amount * 100), // Convert to cents
+            currency: currency,
+            metadata: {
+                customer_id: customer_id || 'anonymous',
+                order_type: 'watch_purchase'
+            },
+            automatic_payment_methods: {
+                enabled: true,
+            },
+        });
+        
+        res.json({
+            client_secret: paymentIntent.client_secret,
+            payment_intent_id: paymentIntent.id
+        });
+    } catch (error) {
+        console.error('Error creating payment intent:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Confirm payment and create order
+app.post('/api/confirm-payment', async (req, res) => {
+    try {
+        const { payment_intent_id, customer_id, items } = req.body;
+        
+        if (!payment_intent_id) {
+            return res.status(400).json({ error: 'Payment intent ID is required' });
+        }
+        
+        // Retrieve payment intent from Stripe
+        const paymentIntent = await stripe.paymentIntents.retrieve(payment_intent_id);
+        
+        if (paymentIntent.status !== 'succeeded') {
+            return res.status(400).json({ error: 'Payment not completed' });
+        }
+        
+        // Calculate total amount
+        let totalAmount = 0;
+        items.forEach(item => {
+            totalAmount += item.price * item.quantity;
+        });
+        
+        // Create order in database
+        const orderQuery = 'INSERT INTO orders (customer_id, total_amount, status) VALUES (?, ?, ?)';
+        
+        db.run(orderQuery, [customer_id, totalAmount, 'completed'], function(err) {
+            if (err) {
+                console.error('Error creating order:', err);
+                return res.status(500).json({ error: 'Failed to create order' });
+            }
+            
+            const orderId = this.lastID;
+            
+            // Create order items
+            const itemQuery = 'INSERT INTO order_items (order_id, watch_id, quantity, price) VALUES (?, ?, ?, ?)';
+            const stmt = db.prepare(itemQuery);
+            
+            items.forEach(item => {
+                stmt.run([orderId, item.watch_id, item.quantity, item.price]);
+            });
+            
+            stmt.finalize();
+            
+            res.json({
+                success: true,
+                order_id: orderId,
+                payment_intent_id: payment_intent_id,
+                total_amount: totalAmount,
+                status: 'completed'
+            });
+        });
+    } catch (error) {
+        console.error('Error confirming payment:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Get payment methods for customer
+app.get('/api/payment-methods/:customer_id', async (req, res) => {
+    try {
+        const { customer_id } = req.params;
+        
+        // Create or retrieve Stripe customer
+        let stripeCustomer;
+        try {
+            stripeCustomer = await stripe.customers.retrieve(customer_id);
+        } catch (error) {
+            // Customer doesn't exist, create new one
+            stripeCustomer = await stripe.customers.create({
+                id: customer_id,
+                metadata: {
+                    local_customer_id: customer_id
+                }
+            });
+        }
+        
+        // Get payment methods
+        const paymentMethods = await stripe.paymentMethods.list({
+            customer: stripeCustomer.id,
+            type: 'card',
+        });
+        
+        res.json({
+            customer_id: stripeCustomer.id,
+            payment_methods: paymentMethods.data
+        });
+    } catch (error) {
+        console.error('Error retrieving payment methods:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Create setup intent for saving payment method
+app.post('/api/create-setup-intent', async (req, res) => {
+    try {
+        const { customer_id } = req.body;
+        
+        if (!customer_id) {
+            return res.status(400).json({ error: 'Customer ID is required' });
+        }
+        
+        // Create or retrieve Stripe customer
+        let stripeCustomer;
+        try {
+            stripeCustomer = await stripe.customers.retrieve(customer_id);
+        } catch (error) {
+            stripeCustomer = await stripe.customers.create({
+                id: customer_id,
+                metadata: {
+                    local_customer_id: customer_id
+                }
+            });
+        }
+        
+        // Create setup intent
+        const setupIntent = await stripe.setupIntents.create({
+            customer: stripeCustomer.id,
+            payment_method_types: ['card'],
+            usage: 'off_session',
+        });
+        
+        res.json({
+            client_secret: setupIntent.client_secret,
+            setup_intent_id: setupIntent.id
+        });
+    } catch (error) {
+        console.error('Error creating setup intent:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // Serve the main page
