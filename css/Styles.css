@@ -155,14 +155,93 @@ p {
 .icon-phone::before { content: "\f095"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
 .icon-email::before { content: "\f0e0"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
 .icon-shipping::before { content: "\f0d1"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-search::before { content: "\f002"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-user::before { content: "\f007"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-heart::before { content: "\f004"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-cart::before { content: "\f07a"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-arrow::before { content: "\f061"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-shield::before { content: "\f132"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-lock::before { content: "\f023"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
-.icon-award::before { content: "\f091"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
+.icon-search::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-user::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1077/1077114.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-heart::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1077/1077035.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-cart::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3143/3143146.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-arrow::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/271/271228.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-shield::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828843.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-lock::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828479.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-award::before { 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828851.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .icon-star::before { content: "\f005"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
 .icon-eye::before { content: "\f06e"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
 .icon-tools::before { content: "\f0ad"; font-family: "Font Awesome 6 Free"; font-weight: 900; }

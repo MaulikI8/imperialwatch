@@ -230,9 +230,9 @@
                         // Store customer info in localStorage for demo
                         localStorage.setItem('loggedInUser', JSON.stringify(customer));
                         
-                        // Redirect to home page after 2 seconds
+                        // Redirect to profile page after 2 seconds
                         setTimeout(() => {
-                            window.location.href = '../html/WATCHthis.html';
+                            window.location.href = 'profile.html';
                         }, 2000);
                     } else {
                         showMessage('Email not found. Please register first or check your email address.', 'error');

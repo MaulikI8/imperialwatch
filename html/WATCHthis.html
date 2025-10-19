@@ -79,7 +79,7 @@
                             <a href="../pages/Favorites.html" class="user-action">
                                 <i class="icon-heart"></i>
                                 <span>Wishlist</span>
-                                <span class="badge">3</span>
+                                <span class="badge">0</span>
                             </a>
                             <a href="../pages/Cart.html" class="user-action cart-action">
                                 <i class="icon-cart"></i>
@@ -883,9 +883,11 @@
                 const user = JSON.parse(loggedInUser);
                 accountText.textContent = user.name.split(' ')[0]; // Show first name
                 accountLink.title = `Logged in as ${user.name}`;
+                accountLink.href = '../pages/profile.html'; // Link to profile when logged in
             } else {
                 accountText.textContent = 'Account';
                 accountLink.title = 'Login or Register';
+                accountLink.href = '../pages/login.html'; // Link to login when not logged in
             }
             
             // Render cart counter
