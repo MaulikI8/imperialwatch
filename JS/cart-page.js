@@ -26,14 +26,16 @@ function renderCartItems() {
     const emptyCart = document.getElementById('emptyCart');
     const cartWithItems = document.getElementById('cartWithItems');
 
-    if (cartItems.length === 0) {
-        emptyCart.style.display = 'block';
-        cartWithItems.style.display = 'none';
+    console.log('Cart items:', cartItems); // Debug log
+
+    if (!cartItems || cartItems.length === 0) {
+        if (emptyCart) emptyCart.style.display = 'block';
+        if (cartWithItems) cartWithItems.style.display = 'none';
         return;
     }
 
-    emptyCart.style.display = 'none';
-    cartWithItems.style.display = 'block';
+    if (emptyCart) emptyCart.style.display = 'none';
+    if (cartWithItems) cartWithItems.style.display = 'block';
 
     cartItemsContainer.innerHTML = cartItems.map((item, index) => `
         <div class="cart-item" data-index="${index}">

@@ -34,6 +34,13 @@ function initCart() {
             e.preventDefault();
             addToCart(e.target);
         }
+        
+        // Buy now functionality
+        if (e.target.classList.contains('buy-now') || 
+            e.target.closest('.buy-now')) {
+            e.preventDefault();
+            buyNow(e.target);
+        }
     });
 }
 
@@ -53,8 +60,8 @@ function initWishlist() {
 
 function addToCart(button) {
     const productCard = button.closest('.product-card');
-    const productName = productCard.querySelector('.product-name').textContent;
-    const productPrice = productCard.querySelector('.current-price').textContent;
+    const productName = productCard.querySelector('.product-name')?.textContent || productCard.querySelector('.product-title')?.textContent;
+    const productPrice = productCard.querySelector('.current-price')?.textContent || productCard.querySelector('.product-price')?.textContent;
     const productImage = productCard.querySelector('.product-image img').src;
     
     const existingItem = cartItems.find(item => item.name === productName);
@@ -63,6 +70,7 @@ function addToCart(button) {
         existingItem.quantity += 1;
     } else {
         cartItems.push({
+            id: Date.now(),
             name: productName,
             price: productPrice,
             image: productImage,
@@ -79,6 +87,29 @@ function addToCart(button) {
     
     // Add animation to cart icon
     animateCartIcon();
+}
+
+// Buy now functionality
+function buyNow(button) {
+    const productCard = button.closest('.product-card');
+    const productName = productCard.querySelector('.product-name')?.textContent || productCard.querySelector('.product-title')?.textContent;
+    const productPrice = productCard.querySelector('.current-price')?.textContent || productCard.querySelector('.product-price')?.textContent;
+    const productImage = productCard.querySelector('.product-image img').src;
+    
+    // Clear cart and add this item
+    cartItems = [{
+        id: Date.now(),
+        name: productName,
+        price: productPrice,
+        image: productImage,
+        quantity: 1
+    }];
+    
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCartCount();
+    
+    // Redirect to checkout
+    window.location.href = '../pages/Checkout.html';
 }
 
 function updateCartCount() {

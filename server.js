@@ -8,7 +8,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const cors = require('cors');
-const stripe = require('stripe')('sk_test_YOUR_STRIPE_SECRET_KEY_HERE'); // Replace with your actual test key from Stripe Dashboard
+const stripe = require('stripe')('sk_test_YOUR_STRIPE_SECRET_KEY_HERE'); // Replace with your actual test key
 
 const app = express();
 const PORT = process.env.PORT || 3000;

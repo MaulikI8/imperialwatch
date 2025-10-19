@@ -232,25 +232,11 @@
                             </div>
                             
                             <div class="payment-details" id="cardDetails">
-                                <div class="form-group">
-                                    <label for="cardNumber">Card Number *</label>
-                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="expiryDate">Expiry Date *</label>
-                                        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                                <div class="stripe-payment-container">
+                                    <div id="payment-element">
+                                        <!-- Stripe Elements will be inserted here -->
                                     </div>
-                                    <div class="form-group">
-                                        <label for="cvv">CVV *</label>
-                                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="cardName">Name on Card *</label>
-                                    <input type="text" id="cardName" name="cardName">
+                                    <div id="payment-message" class="hidden"></div>
                                 </div>
                             </div>
                             

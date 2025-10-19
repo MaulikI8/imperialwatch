@@ -215,7 +215,7 @@ p {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828843.png');
+    background-image: url('https://cdn-icons-png.flaticon.com/512/189/189665.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -265,16 +265,7 @@ p {
 }
 
 .header-top {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
-    padding: 8px 0;
-    font-size: 14px;
-}
-
-.header-top-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: none;
 }
 
 .contact-info span {

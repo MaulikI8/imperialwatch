@@ -5,7 +5,7 @@
  */
 
 // Initialize Stripe with your publishable key
-const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY_HERE'); // Replace with your actual publishable key from Stripe Dashboard
+const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY_HERE'); // Replace with your actual publishable key
 let elements;
 let paymentIntentClientSecret;
 
@@ -469,6 +469,51 @@ function formatPrice(price) {
 // Initialize Stripe Elements
 async function initializeStripeElements() {
     console.log('Stripe Elements initialized');
+    
+    // Listen for step changes to initialize Stripe when payment step is reached
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-primary') && e.target.textContent.includes('Continue to Payment')) {
+            setTimeout(() => {
+                initializePaymentStep();
+            }, 500);
+        }
+    });
+}
+
+// Initialize payment step with Stripe Elements
+async function initializePaymentStep() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const user = loggedInUser ? JSON.parse(loggedInUser) : null;
+    const total = calculateTotal();
+    
+    try {
+        // Create payment intent
+        const response = await fetch('/api/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: total,
+                customer_id: user ? user.id : 'anonymous'
+            })
+        });
+
+        const { client_secret } = await response.json();
+        paymentIntentClientSecret = client_secret;
+        
+        // Initialize Stripe Elements
+        elements = stripe.elements({ clientSecret: client_secret });
+        
+        // Create payment element
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
+        
+        console.log('Stripe Elements mounted successfully');
+    } catch (error) {
+        console.error('Error initializing Stripe Elements:', error);
+        showNotification('Error initializing payment. Please try again.', 'error');
+    }
 }
 
 // Create payment intent
@@ -566,12 +611,8 @@ async function processPaymentWithStripe() {
     }
     
     const user = JSON.parse(loggedInUser);
-    const total = calculateTotal();
     
     try {
-        // Create payment intent
-        const paymentIntentId = await createPaymentIntent(total, user.id);
-        
         // Prepare order items
         const orderItems = cartItems.map(item => ({
             watch_id: item.id || 1,
@@ -579,8 +620,20 @@ async function processPaymentWithStripe() {
             price: parseFloat(item.price.replace(/[$,]/g, ''))
         }));
         
-        // Handle payment submission
-        await handlePaymentSubmission(user.id, orderItems);
+        // Handle payment submission with Stripe
+        const { error } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: `${window.location.origin}/pages/Checkout.html?payment=success`,
+            },
+        });
+
+        if (error) {
+            showNotification(error.message, 'error');
+        } else {
+            // Payment succeeded, confirm with backend
+            await confirmPaymentWithBackend(paymentIntentClientSecret, user.id, orderItems);
+        }
         
     } catch (error) {
         console.error('Payment processing error:', error);
