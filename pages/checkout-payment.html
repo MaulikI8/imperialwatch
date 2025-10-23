@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Information - Imperial Watches</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/checkout-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="checkout-page">
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="../html/WATCHthis.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">Imperial Watches</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="../html/WATCHthis.html">Home</a></li>
+                    <li><a href="Product.html">All Watches</a></li>
+                    <li><a href="About-us.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="user-action">
+                    <i class="icon-user"></i>
+                    <span>Account</span>
+                </a>
+                <a href="Favorites.html" class="user-action">
+                    <i class="icon-heart"></i>
+                    <span>Wishlist</span>
+                    <span class="badge">0</span>
+                </a>
+                <a href="Cart.html" class="user-action cart-action">
+                    <i class="icon-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumbs">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <a href="Cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout</span>
+                </div>
+                <h1 class="page-title">Payment Information</h1>
+                <p class="page-subtitle">Secure payment processing</p>
+            </div>
+
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="step active" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+            <!-- Checkout Content -->
+            <div class="checkout-content">
+                <div class="checkout-main">
+                    <!-- Step 2: Payment Information -->
+                    <div class="checkout-step active">
+                        <div class="step-header">
+                            <h2>Payment Information</h2>
+                            <p>Secure payment processing</p>
+                        </div>
+                        
+                        <form class="checkout-form" id="paymentForm">
+                            <div class="payment-details">
+                                <div class="payment-form">
+                                    <h3>💳 Credit/Debit Card Information</h3>
+                                    <div class="form-group">
+                                        <label for="cardNumber">Card Number *</label>
+                                        <input type="text" id="cardNumber" name="cardNumber" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiryDate">Expiry Date *</label>
+                                            <input type="text" id="expiryDate" name="expiryDate" placeholder="12/25" value="12/25" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv">CVV *</label>
+                                            <input type="text" id="cvv" name="cvv" placeholder="123" value="123" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardholderName">Cardholder Name *</label>
+                                        <input type="text" id="cardholderName" name="cardholderName" placeholder="John Doe" value="John Doe" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="saveCard" name="saveCard">
+                                            Save this card for future purchases
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Cart items will be populated by JavaScript -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping:</span>
+                                <span id="summaryShipping">FREE</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax:</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+                        <div class="security-badges">
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>PCI Compliant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="checkout-navigation">
+                <a href="checkout-shipping.html" class="btn-secondary">← Back to Shipping</a>
+                <button type="button" class="btn-primary" id="continueToReview">Continue to Review →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Imperial Watches</h4>
+                    <p>Crafting timeless luxury since 2025</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="Product.html">All Watches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Payment page loaded');
+            
+            // Load and display cart items
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // If no items, add test item
+            if (cartItems.length === 0) {
+                cartItems = [{
+                    id: Date.now(),
+                    name: 'Daytona',
+                    price: '$2,500,000',
+                    image: '../images/Daytona.jpg',
+                    quantity: 1
+                }];
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+            
+            console.log('Cart items:', cartItems);
+            
+            // Render order summary
+            renderOrderSummary(cartItems);
+            
+            // Payment method is now always card, no toggle needed
+            
+            // Real-time card validation
+            const cardNumberInput = document.getElementById('cardNumber');
+            const expiryInput = document.getElementById('expiryDate');
+            const cvvInput = document.getElementById('cvv');
+            
+            // Format card number as user types
+            cardNumberInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+                
+                // Real-time validation
+                if (value.length >= 13) {
+                    if (validateCardNumber(value)) {
+                        e.target.style.borderColor = '#28a745';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(40, 167, 69, 0.2)';
+                    } else {
+                        e.target.style.borderColor = '#dc3545';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(220, 53, 69, 0.2)';
+                    }
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+            
+            // Format expiry date as user types
+            expiryInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                }
+                e.target.value = value;
+                
+                // Real-time validation
+                if (value.length === 5) {
+                    if (validateExpiryDate(value)) {
+                        e.target.style.borderColor = '#28a745';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(40, 167, 69, 0.2)';
+                    } else {
+                        e.target.style.borderColor = '#dc3545';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(220, 53, 69, 0.2)';
+                    }
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+            
+            // CVV validation
+            cvvInput.addEventListener('input', function(e) {
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                
+                // Real-time validation
+                if (e.target.value.length >= 3) {
+                    if (validateCVV(e.target.value)) {
+                        e.target.style.borderColor = '#28a745';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(40, 167, 69, 0.2)';
+                    } else {
+                        e.target.style.borderColor = '#dc3545';
+                        e.target.style.boxShadow = '0 0 0 2px rgba(220, 53, 69, 0.2)';
+                    }
+                } else {
+                    e.target.style.borderColor = '';
+                    e.target.style.boxShadow = '';
+                }
+            });
+            
+            // Continue to review button
+            document.getElementById('continueToReview').addEventListener('click', function() {
+                console.log('Continue to review button clicked');
+                if (validatePaymentForm()) {
+                    console.log('Payment form is valid, saving data...');
+                    // Save payment info to sessionStorage
+                    const paymentData = {
+                        method: 'card', // Always card since we removed PayPal
+                        cardNumber: document.getElementById('cardNumber').value,
+                        expiryDate: document.getElementById('expiryDate').value,
+                        cvv: document.getElementById('cvv').value,
+                        cardholderName: document.getElementById('cardholderName').value
+                    };
+                    
+                    console.log('Payment data:', paymentData);
+                    sessionStorage.setItem('paymentInfo', JSON.stringify(paymentData));
+                    
+                    // Redirect to review page
+                    console.log('Redirecting to review page...');
+                    window.location.href = 'checkout-review.html';
+                } else {
+                    console.log('Payment form validation failed');
+                }
+            });
+            
+            // Fallback click handler
+            setTimeout(() => {
+                const continueBtn = document.getElementById('continueToReview');
+                if (continueBtn) {
+                    console.log('Adding fallback click handler');
+                    continueBtn.onclick = function() {
+                        console.log('Fallback continue button clicked');
+                        if (validatePaymentForm()) {
+                            console.log('Payment form is valid, saving data...');
+                            const paymentData = {
+                                method: 'card',
+                                cardNumber: document.getElementById('cardNumber').value,
+                                expiryDate: document.getElementById('expiryDate').value,
+                                cvv: document.getElementById('cvv').value,
+                                cardholderName: document.getElementById('cardholderName').value
+                            };
+                            
+                            console.log('Payment data:', paymentData);
+                            sessionStorage.setItem('paymentInfo', JSON.stringify(paymentData));
+                            console.log('Redirecting to review page...');
+                            window.location.href = 'checkout-review.html';
+                        } else {
+                            console.log('Payment form validation failed');
+                        }
+                    };
+                }
+            }, 500);
+        });
+        
+        function validatePaymentForm() {
+            console.log('Validating payment form...');
+            // Always validate card since we only have card payment now
+            const paymentMethod = 'card';
+            
+            if (paymentMethod === 'card') {
+                const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+                const cardholderName = document.getElementById('cardholderName').value;
+                
+                console.log('Card validation data:', { cardNumber, expiryDate, cvv, cardholderName });
+                
+                let isValid = true;
+                let errors = [];
+                
+                // Validate card number
+                if (!cardNumber) {
+                    errors.push('Card number is required');
+                    document.getElementById('cardNumber').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else if (!validateCardNumber(cardNumber)) {
+                    errors.push('Invalid card number');
+                    document.getElementById('cardNumber').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    document.getElementById('cardNumber').style.borderColor = '#28a745';
+                }
+                
+                // Validate expiry date
+                if (!expiryDate) {
+                    errors.push('Expiry date is required');
+                    document.getElementById('expiryDate').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else if (!validateExpiryDate(expiryDate)) {
+                    errors.push('Invalid expiry date');
+                    document.getElementById('expiryDate').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    document.getElementById('expiryDate').style.borderColor = '#28a745';
+                }
+                
+                // Validate CVV
+                if (!cvv) {
+                    errors.push('CVV is required');
+                    document.getElementById('cvv').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else if (!validateCVV(cvv)) {
+                    errors.push('Invalid CVV');
+                    document.getElementById('cvv').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    document.getElementById('cvv').style.borderColor = '#28a745';
+                }
+                
+                // Validate cardholder name
+                if (!cardholderName) {
+                    errors.push('Cardholder name is required');
+                    document.getElementById('cardholderName').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else if (cardholderName.length < 2) {
+                    errors.push('Cardholder name must be at least 2 characters');
+                    document.getElementById('cardholderName').style.borderColor = '#dc3545';
+                    isValid = false;
+                } else {
+                    document.getElementById('cardholderName').style.borderColor = '#28a745';
+                }
+                
+                if (!isValid) {
+                    console.log('Validation errors:', errors);
+                    alert('Please fix the following errors:\n\n' + errors.join('\n'));
+                    return false;
+                }
+                
+                console.log('Payment form validation passed!');
+                
+                return isValid;
+            }
+            
+            return true; // PayPal doesn't need validation
+        }
+        
+        // Luhn algorithm for card number validation
+        function validateCardNumber(cardNumber) {
+            // Remove all non-digits
+            const cleaned = cardNumber.replace(/\D/g, '');
+            
+            // Check if it's a valid length (13-19 digits)
+            if (cleaned.length < 13 || cleaned.length > 19) {
+                return false;
+            }
+            
+            // Luhn algorithm
+            let sum = 0;
+            let isEven = false;
+            
+            // Process digits from right to left
+            for (let i = cleaned.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleaned.charAt(i));
+                
+                if (isEven) {
+                    digit *= 2;
+                    if (digit > 9) {
+                        digit -= 9;
+                    }
+                }
+                
+                sum += digit;
+                isEven = !isEven;
+            }
+            
+            return (sum % 10) === 0;
+        }
+        
+        // Validate expiry date (MM/YY format)
+        function validateExpiryDate(expiryDate) {
+            const regex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+            if (!regex.test(expiryDate)) {
+                return false;
+            }
+            
+            const [month, year] = expiryDate.split('/');
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear() % 100; // Get last 2 digits
+            const currentMonth = currentDate.getMonth() + 1;
+            
+            const expYear = parseInt(year);
+            const expMonth = parseInt(month);
+            
+            // Check if expiry date is in the future
+            if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Validate CVV (3-4 digits)
+        function validateCVV(cvv) {
+            const regex = /^[0-9]{3,4}$/;
+            return regex.test(cvv);
+        }
+        
+        function renderOrderSummary(cartItems) {
+            const summaryItems = document.getElementById('summaryItems');
+            if (!summaryItems) return;
+            
+            if (cartItems.length === 0) {
+                summaryItems.innerHTML = '<p>No items in cart</p>';
+                return;
+            }
+            
+            let subtotal = 0;
+            
+            summaryItems.innerHTML = cartItems.map(item => {
+                const priceValue = parseFloat(item.price.replace(/[$,]/g, ''));
+                subtotal += priceValue * item.quantity;
+                
+                return `
+                    <div class="summary-item">
+                        <div class="item-info">
+                            <img src="${item.image}" alt="${item.name}" class="item-image">
+                            <div class="item-details">
+                                <h4>${item.name}</h4>
+                                <span class="item-quantity">Qty: ${item.quantity}</span>
+                            </div>
+                        </div>
+                        <div class="item-price">${item.price}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Update totals
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            
+            document.getElementById('summarySubtotal').textContent = formatPrice(subtotal);
+            document.getElementById('summaryTax').textContent = formatPrice(tax);
+            document.getElementById('summaryTotal').textContent = formatPrice(total);
+        }
+        
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+    </script>
+</body>
+</html>

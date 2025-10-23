@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Order - Imperial Watches</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/checkout-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="checkout-page">
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="../html/WATCHthis.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">Imperial Watches</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="../html/WATCHthis.html">Home</a></li>
+                    <li><a href="Product.html">All Watches</a></li>
+                    <li><a href="About-us.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="user-action">
+                    <i class="icon-user"></i>
+                    <span>Account</span>
+                </a>
+                <a href="Favorites.html" class="user-action">
+                    <i class="icon-heart"></i>
+                    <span>Wishlist</span>
+                    <span class="badge">0</span>
+                </a>
+                <a href="Cart.html" class="user-action cart-action">
+                    <i class="icon-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumbs">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <a href="Cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout</span>
+                </div>
+                <h1 class="page-title">Review Your Order</h1>
+                <p class="page-subtitle">Please review your order details before confirming</p>
+            </div>
+
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="step completed" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="step active" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+            <!-- Checkout Content -->
+            <div class="checkout-content">
+                <div class="checkout-main">
+                    <!-- Step 3: Review Order -->
+                    <div class="checkout-step active">
+                        <div class="step-header">
+                            <h2>Review Your Order</h2>
+                            <p>Please review your order details before confirming</p>
+                        </div>
+                        
+                        <div class="order-review">
+                            <!-- Shipping Information -->
+                            <div class="review-section">
+                                <h3>Shipping Information</h3>
+                                <div class="review-details" id="shippingReview">
+                                    <!-- Shipping info will be populated by JavaScript -->
+                                </div>
+                                <a href="checkout-shipping.html" class="edit-link">Edit</a>
+                            </div>
+                            
+                            <!-- Payment Information -->
+                            <div class="review-section">
+                                <h3>Payment Information</h3>
+                                <div class="review-details" id="paymentReview">
+                                    <!-- Payment info will be populated by JavaScript -->
+                                </div>
+                                <a href="checkout-payment.html" class="edit-link">Edit</a>
+                            </div>
+                            
+                            <!-- Order Items -->
+                            <div class="review-section">
+                                <h3>Order Items</h3>
+                                <div class="order-items" id="orderItems">
+                                    <!-- Order items will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <!-- Order Summary -->
+                            <div class="review-section">
+                                <h3>Order Summary</h3>
+                                <div class="order-summary-details" id="orderSummary">
+                                    <!-- Order summary will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary">
+                        <h3>Final Total</h3>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping:</span>
+                                <span id="summaryShipping">FREE</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax:</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+                        <div class="security-badges">
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>PCI Compliant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="checkout-navigation">
+                <a href="checkout-payment.html" class="btn-secondary">← Back to Payment</a>
+                <button type="button" class="btn-primary" id="completeOrder">Complete Order ✓</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Imperial Watches</h4>
+                    <p>Crafting timeless luxury since 2025</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="Product.html">All Watches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Review page loaded');
+            
+            // Load data from sessionStorage
+            const shippingInfo = JSON.parse(sessionStorage.getItem('shippingInfo')) || {
+                firstName: 'Maulik',
+                lastName: 'Joshi',
+                email: 'maulik@example.com',
+                phone: '123-456-7890',
+                address: '123 Main St',
+                city: 'New York',
+                state: 'NY',
+                zipCode: '10001',
+                country: 'US'
+            };
+            const paymentInfo = JSON.parse(sessionStorage.getItem('paymentInfo')) || {
+                method: 'card',
+                cardNumber: '4242 4242 4242 4242',
+                expiryDate: '12/25',
+                cvv: '123',
+                cardholderName: 'Maulik Joshi'
+            };
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // If no items, add test item
+            if (cartItems.length === 0) {
+                cartItems = [{
+                    id: Date.now(),
+                    name: 'Daytona',
+                    price: '$2,500,000',
+                    image: '../images/Daytona.jpg',
+                    quantity: 1
+                }];
+            }
+            
+            console.log('Shipping info:', shippingInfo);
+            console.log('Payment info:', paymentInfo);
+            console.log('Cart items:', cartItems);
+            
+            // Render all review sections
+            renderShippingReview(shippingInfo);
+            renderPaymentReview(paymentInfo);
+            renderOrderItems(cartItems);
+            renderOrderSummary(cartItems);
+            
+            // Complete order button
+            document.getElementById('completeOrder').addEventListener('click', function() {
+                console.log('Complete order button clicked');
+                
+                // Create order
+                const orderNumber = 'ORD-' + Date.now();
+                const orderData = {
+                    orderNumber: orderNumber,
+                    shipping: shippingInfo,
+                    payment: paymentInfo,
+                    items: cartItems,
+                    total: calculateTotal(cartItems),
+                    status: 'completed',
+                    date: new Date().toISOString()
+                };
+                
+                console.log('Order data:', orderData);
+                
+                // Save order to localStorage
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                orders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // Clear cart
+                localStorage.removeItem('cart');
+                localStorage.removeItem('cartItems');
+                
+                // Clear session data
+                sessionStorage.removeItem('shippingInfo');
+                sessionStorage.removeItem('paymentInfo');
+                
+                console.log('Redirecting to completion page...');
+                // Redirect to completion page
+                window.location.href = `checkout-complete.html?order=${orderNumber}`;
+            });
+            
+            // Fallback click handler for complete order button
+            setTimeout(() => {
+                const completeBtn = document.getElementById('completeOrder');
+                if (completeBtn) {
+                    console.log('Adding fallback click handler for complete order');
+                    completeBtn.onclick = function() {
+                        console.log('Fallback complete order button clicked');
+                        
+                        // Create order
+                        const orderNumber = 'ORD-' + Date.now();
+                        const orderData = {
+                            orderNumber: orderNumber,
+                            shipping: shippingInfo,
+                            payment: paymentInfo,
+                            items: cartItems,
+                            total: calculateTotal(cartItems),
+                            status: 'completed',
+                            date: new Date().toISOString()
+                        };
+                        
+                        console.log('Order data:', orderData);
+                        
+                        // Save order to localStorage
+                        const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                        orders.push(orderData);
+                        localStorage.setItem('orders', JSON.stringify(orders));
+                        
+                        // Clear cart
+                        localStorage.removeItem('cart');
+                        localStorage.removeItem('cartItems');
+                        
+                        // Clear session data
+                        sessionStorage.removeItem('shippingInfo');
+                        sessionStorage.removeItem('paymentInfo');
+                        
+                        console.log('Redirecting to completion page...');
+                        window.location.href = `checkout-complete.html?order=${orderNumber}`;
+                    };
+                }
+            }, 500);
+        });
+        
+        function renderShippingReview(shippingInfo) {
+            const shippingReview = document.getElementById('shippingReview');
+            if (!shippingReview) return;
+            
+            shippingReview.innerHTML = `
+                <div class="review-item">
+                    <strong>${shippingInfo.firstName} ${shippingInfo.lastName}</strong><br>
+                    ${shippingInfo.email}<br>
+                    ${shippingInfo.phone}
+                </div>
+                <div class="review-item">
+                    <strong>Address:</strong><br>
+                    ${shippingInfo.address}<br>
+                    ${shippingInfo.city}, ${shippingInfo.state} ${shippingInfo.zipCode}<br>
+                    ${shippingInfo.country}
+                </div>
+            `;
+        }
+        
+        function renderPaymentReview(paymentInfo) {
+            const paymentReview = document.getElementById('paymentReview');
+            if (!paymentReview) return;
+            
+            if (paymentInfo.method === 'card') {
+                const maskedCard = paymentInfo.cardNumber.replace(/\d(?=\d{4})/g, '*');
+                paymentReview.innerHTML = `
+                    <div class="review-item">
+                        <strong>Payment Method:</strong> Credit/Debit Card<br>
+                        <strong>Card:</strong> ${maskedCard}<br>
+                        <strong>Expiry:</strong> ${paymentInfo.expiryDate}<br>
+                        <strong>Cardholder:</strong> ${paymentInfo.cardholderName}
+                    </div>
+                `;
+            } else {
+                paymentReview.innerHTML = `
+                    <div class="review-item">
+                        <strong>Payment Method:</strong> PayPal
+                    </div>
+                `;
+            }
+        }
+        
+        function renderOrderItems(cartItems) {
+            const orderItems = document.getElementById('orderItems');
+            if (!orderItems) return;
+            
+            if (cartItems.length === 0) {
+                orderItems.innerHTML = '<p>No items in order</p>';
+                return;
+            }
+            
+            orderItems.innerHTML = cartItems.map(item => `
+                <div class="order-item">
+                    <div class="item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="item-details">
+                        <h4>${item.name}</h4>
+                        <span class="item-quantity">Qty: ${item.quantity}</span>
+                        <span class="item-price">${item.price}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderOrderSummary(cartItems) {
+            const orderSummary = document.getElementById('orderSummary');
+            const subtotal = calculateSubtotal(cartItems);
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            
+            if (orderSummary) {
+                orderSummary.innerHTML = `
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>${formatPrice(subtotal)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>FREE</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax:</span>
+                        <span>${formatPrice(tax)}</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>${formatPrice(total)}</span>
+                    </div>
+                `;
+            }
+            
+            // Update sidebar totals
+            document.getElementById('summarySubtotal').textContent = formatPrice(subtotal);
+            document.getElementById('summaryTax').textContent = formatPrice(tax);
+            document.getElementById('summaryTotal').textContent = formatPrice(total);
+        }
+        
+        function calculateSubtotal(cartItems) {
+            return cartItems.reduce((total, item) => {
+                const priceValue = parseFloat(item.price.replace(/[$,]/g, ''));
+                return total + (priceValue * item.quantity);
+            }, 0);
+        }
+        
+        function calculateTotal(cartItems) {
+            const subtotal = calculateSubtotal(cartItems);
+            const tax = subtotal * 0.08;
+            return subtotal + tax;
+        }
+        
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+    </script>
+</body>
+</html>

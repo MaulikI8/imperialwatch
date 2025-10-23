@@ -142,7 +142,289 @@
 }
 
 .checkout-step.active {
+    display: block !important;
+}
+
+/* Fix for separate checkout pages */
+.checkout-main .checkout-step {
+    display: block !important;
+}
+
+/* Header fixes for checkout pages */
+.checkout-page .modern-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e9ecef;
+}
+
+.checkout-page .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 80px;
+}
+
+.checkout-page .logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.checkout-page .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.checkout-page .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%);
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.checkout-page .main-nav {
+    display: flex;
+}
+
+.checkout-page .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.checkout-page .nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.checkout-page .nav-menu a:hover {
+    color: #d4af37;
+}
+
+.checkout-page .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.checkout-page .user-action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.checkout-page .user-action:hover {
+    background: #f8f9fa;
+}
+
+.checkout-page .badge,
+.checkout-page .cart-count {
+    background: #dc3545;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Form validation styles */
+.form-help {
     display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.form-group input:valid {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2) !important;
+}
+
+.form-group input:invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2) !important;
+}
+
+/* Real-time validation feedback */
+.validation-success {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2) !important;
+}
+
+.validation-error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2) !important;
+}
+
+/* Review page specific styles */
+.order-review {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.review-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.review-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.review-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.review-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.review-item {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.review-item:last-child {
+    margin-bottom: 0;
+}
+
+.edit-link {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.order-item:last-child {
+    margin-bottom: 0;
+}
+
+.order-item .item-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.order-item .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-item .item-details {
+    flex: 1;
+}
+
+.order-item .item-details h4 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.order-item .item-quantity {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+.order-item .item-price {
+    color: #d4af37;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.order-summary-details {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.order-summary-details .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.order-summary-details .summary-row.total {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    border-top: 2px solid #d4af37;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+/* Payment form field sizing */
+.payment-form input[type="text"] {
+    font-size: 1.1rem !important;
+    padding: 15px !important;
+    width: 100% !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 8px !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.payment-form input[type="text"]:focus {
+    outline: none !important;
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Card number field specific styling */
+#cardNumber {
+    letter-spacing: 0.1em !important;
+    min-width: 300px !important;
+    font-family: 'Courier New', monospace !important;
 }
 
 .step-header {
@@ -399,7 +681,60 @@
 .checkout-navigation .btn-secondary {
     padding: 15px 30px;
     font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
     min-width: 150px;
+}
+
+.checkout-navigation .btn-secondary {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+.checkout-navigation .btn-secondary:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.checkout-navigation .btn-primary {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+    color: #2c3e50;
+    border: none;
+}
+
+.checkout-navigation .btn-primary:hover {
+    background: linear-gradient(135deg, #b8941f 0%, #f0d699 50%, #b8941f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Enhanced navigation buttons */
+.checkout-navigation .btn-primary,
+.checkout-navigation .btn-secondary {
+    min-width: 200px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.checkout-navigation .btn-primary {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+    border: none;
+    color: #2c3e50;
+}
+
+.checkout-navigation .btn-secondary {
+    background: #f8f9fa;
+    border: 2px solid #d4af37;
+    color: #2c3e50;
+}
+
+.checkout-navigation .btn-secondary:hover {
+    background: #d4af37;
+    color: white;
 }
 
 /* Order Summary Sidebar */
@@ -613,6 +948,58 @@
         width: 80px;
         height: 80px;
     }
+}
+
+/* Payment Form Styles */
+.payment-form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.payment-form h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.payment-form .form-group {
+    margin-bottom: 20px;
+}
+
+.payment-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.payment-form .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.payment-form .form-control:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
 }
 
 /* Animation for step transitions */

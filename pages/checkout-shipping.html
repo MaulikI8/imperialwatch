@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Information - Imperial Watches</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/checkout-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="checkout-page">
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="../html/WATCHthis.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">Imperial Watches</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="../html/WATCHthis.html">Home</a></li>
+                    <li><a href="Product.html">All Watches</a></li>
+                    <li><a href="About-us.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="user-action">
+                    <i class="icon-user"></i>
+                    <span>Account</span>
+                </a>
+                <a href="Favorites.html" class="user-action">
+                    <i class="icon-heart"></i>
+                    <span>Wishlist</span>
+                    <span class="badge">0</span>
+                </a>
+                <a href="Cart.html" class="user-action cart-action">
+                    <i class="icon-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumbs">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <a href="Cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout</span>
+                </div>
+                <h1 class="page-title">Shipping Information</h1>
+                <p class="page-subtitle">Enter your delivery details</p>
+            </div>
+
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+            <!-- Checkout Content -->
+            <div class="checkout-content">
+                <div class="checkout-main">
+                    <!-- Step 1: Shipping Information -->
+                    <div class="checkout-step active">
+                        <div class="step-header">
+                            <h2>Shipping Information</h2>
+                            <p>Enter your delivery details</p>
+                        </div>
+                        
+                        <form class="checkout-form" id="shippingForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Province *</label>
+                                    <input type="text" id="state" name="state" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="zipCode">ZIP/Postal Code *</label>
+                                    <input type="text" id="zipCode" name="zipCode" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <select id="country" name="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="FR">France</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="CH">Switzerland</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="saveAddress" name="saveAddress">
+                                    Save this address for future orders
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Cart items will be populated by JavaScript -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping:</span>
+                                <span id="summaryShipping">FREE</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax:</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+                        <div class="security-badges">
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>PCI Compliant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="checkout-navigation">
+                <a href="Cart.html" class="btn-secondary">← Back to Cart</a>
+                <button type="button" class="btn-primary" id="continueToPayment">Continue to Payment →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Imperial Watches</h4>
+                    <p>Crafting timeless luxury since 2025</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="Product.html">All Watches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Shipping page loaded');
+            
+            // Load and display cart items
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // If no items, add test item
+            if (cartItems.length === 0) {
+                cartItems = [{
+                    id: Date.now(),
+                    name: 'Daytona',
+                    price: '$2,500,000',
+                    image: '../images/Daytona.jpg',
+                    quantity: 1
+                }];
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+            
+            console.log('Cart items:', cartItems);
+            
+            // Render order summary
+            renderOrderSummary(cartItems);
+            
+            // Continue to payment button
+            document.getElementById('continueToPayment').addEventListener('click', function() {
+                // Validate form
+                if (validateShippingForm()) {
+                    // Save shipping info to sessionStorage
+                    const shippingData = {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        city: document.getElementById('city').value,
+                        state: document.getElementById('state').value,
+                        zipCode: document.getElementById('zipCode').value,
+                        country: document.getElementById('country').value
+                    };
+                    
+                    sessionStorage.setItem('shippingInfo', JSON.stringify(shippingData));
+                    
+                    // Redirect to payment page
+                    window.location.href = 'checkout-payment.html';
+                }
+            });
+        });
+        
+        function validateShippingForm() {
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state', 'zipCode', 'country'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (field && !field.value.trim()) {
+                    field.style.borderColor = '#dc3545';
+                    isValid = false;
+                } else if (field) {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields');
+            }
+            
+            return isValid;
+        }
+        
+        function renderOrderSummary(cartItems) {
+            const summaryItems = document.getElementById('summaryItems');
+            if (!summaryItems) return;
+            
+            if (cartItems.length === 0) {
+                summaryItems.innerHTML = '<p>No items in cart</p>';
+                return;
+            }
+            
+            let subtotal = 0;
+            
+            summaryItems.innerHTML = cartItems.map(item => {
+                const priceValue = parseFloat(item.price.replace(/[$,]/g, ''));
+                subtotal += priceValue * item.quantity;
+                
+                return `
+                    <div class="summary-item">
+                        <div class="item-info">
+                            <img src="${item.image}" alt="${item.name}" class="item-image">
+                            <div class="item-details">
+                                <h4>${item.name}</h4>
+                                <span class="item-quantity">Qty: ${item.quantity}</span>
+                            </div>
+                        </div>
+                        <div class="item-price">${item.price}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Update totals
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            
+            document.getElementById('summarySubtotal').textContent = formatPrice(subtotal);
+            document.getElementById('summaryTax').textContent = formatPrice(tax);
+            document.getElementById('summaryTotal').textContent = formatPrice(total);
+        }
+        
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Complete - Imperial Watches</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="../css/checkout-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="checkout-page">
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="../html/WATCHthis.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">Imperial Watches</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="../html/WATCHthis.html">Home</a></li>
+                    <li><a href="Product.html">All Watches</a></li>
+                    <li><a href="About-us.html">About</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="user-action">
+                    <i class="icon-user"></i>
+                    <span>Account</span>
+                </a>
+                <a href="Favorites.html" class="user-action">
+                    <i class="icon-heart"></i>
+                    <span>Wishlist</span>
+                    <span class="badge">0</span>
+                </a>
+                <a href="Cart.html" class="user-action cart-action">
+                    <i class="icon-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumbs">
+                    <a href="../html/WATCHthis.html">Home</a>
+                    <span>/</span>
+                    <a href="Cart.html">Cart</a>
+                    <span>/</span>
+                    <span>Checkout Complete</span>
+                </div>
+                <h1 class="page-title">Order Complete!</h1>
+                <p class="page-subtitle">Thank you for your purchase</p>
+            </div>
+
+            <!-- Checkout Steps -->
+            <div class="checkout-steps">
+                <div class="step completed" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Shipping</div>
+                </div>
+                <div class="step completed" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Payment</div>
+                </div>
+                <div class="step completed" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Review</div>
+                </div>
+                <div class="step completed" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+            <!-- Order Complete Content -->
+            <div class="order-complete">
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>🎉 Order Successfully Placed!</h2>
+                    <p class="order-number">Order Number: <span id="orderNumber">ORD-1234567890</span></p>
+                    <p>Thank you for choosing Imperial Watches. Your order has been confirmed and will be processed shortly.</p>
+                </div>
+
+                <div class="order-details">
+                    <div class="order-info">
+                        <h3>What's Next?</h3>
+                        <div class="next-steps">
+                            <div class="step-item">
+                                <div class="step-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Confirmation Email</h4>
+                                    <p>You will receive an order confirmation email within the next few minutes.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Order Processing</h4>
+                                    <p>Your order will be carefully packaged and shipped within 1-2 business days.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Shipping Updates</h4>
+                                    <p>You will receive tracking information via email once your order ships.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details" id="orderSummary">
+                            <!-- Order summary will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="../html/WATCHthis.html" class="btn-primary">Continue Shopping</a>
+                    <a href="#" class="btn-secondary" id="printReceipt">Print Receipt</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Imperial Watches</h4>
+                    <p>Crafting timeless luxury since 2025</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../html/WATCHthis.html">Home</a></li>
+                        <li><a href="Product.html">All Watches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Imperial Watches. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Order complete page loaded');
+            
+            // Get order number from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderNumber = urlParams.get('order') || 'ORD-' + Date.now();
+            
+            document.getElementById('orderNumber').textContent = orderNumber;
+            
+            // Load order details from localStorage
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const currentOrder = orders.find(order => order.orderNumber === orderNumber);
+            
+            if (currentOrder) {
+                renderOrderSummary(currentOrder);
+            } else {
+                // Fallback if order not found
+                renderFallbackSummary();
+            }
+            
+            // Print receipt functionality
+            document.getElementById('printReceipt').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.print();
+            });
+        });
+        
+        function renderOrderSummary(order) {
+            const orderSummary = document.getElementById('orderSummary');
+            if (!orderSummary) return;
+            
+            const subtotal = calculateSubtotal(order.items);
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            
+            orderSummary.innerHTML = `
+                <div class="summary-item">
+                    <strong>Order Date:</strong> ${new Date(order.date).toLocaleDateString()}
+                </div>
+                <div class="summary-item">
+                    <strong>Items:</strong> ${order.items.length} item(s)
+                </div>
+                <div class="summary-item">
+                    <strong>Subtotal:</strong> ${formatPrice(subtotal)}
+                </div>
+                <div class="summary-item">
+                    <strong>Shipping:</strong> FREE
+                </div>
+                <div class="summary-item">
+                    <strong>Tax:</strong> ${formatPrice(tax)}
+                </div>
+                <div class="summary-item total">
+                    <strong>Total:</strong> ${formatPrice(total)}
+                </div>
+                <div class="summary-item">
+                    <strong>Status:</strong> <span class="status-confirmed">Confirmed</span>
+                </div>
+            `;
+        }
+        
+        function renderFallbackSummary() {
+            const orderSummary = document.getElementById('orderSummary');
+            if (!orderSummary) return;
+            
+            orderSummary.innerHTML = `
+                <div class="summary-item">
+                    <strong>Order Date:</strong> ${new Date().toLocaleDateString()}
+                </div>
+                <div class="summary-item">
+                    <strong>Status:</strong> <span class="status-confirmed">Confirmed</span>
+                </div>
+                <div class="summary-item">
+                    <p>Order details will be available in your confirmation email.</p>
+                </div>
+            `;
+        }
+        
+        function calculateSubtotal(items) {
+            return items.reduce((total, item) => {
+                const priceValue = parseFloat(item.price.replace(/[$,]/g, ''));
+                return total + (priceValue * item.quantity);
+            }, 0);
+        }
+        
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+    </script>
+
+    <style>
+        .order-complete {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .success-message {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .success-message h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .order-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .next-steps {
+            margin-top: 20px;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #007bff;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .step-content p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .summary-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .summary-item.total {
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-top: 2px solid #007bff;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        .status-confirmed {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .order-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>
