@@ -871,15 +871,23 @@
         // Initialize React components when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             // Check if user is logged in and update account link
-            const loggedInUser = localStorage.getItem('loggedInUser');
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
             const accountLink = document.getElementById('accountLink');
             const accountText = document.getElementById('accountText');
             
-            if (loggedInUser) {
-                const user = JSON.parse(loggedInUser);
-                accountText.textContent = user.name.split(' ')[0]; // Show first name
-                accountLink.title = `Logged in as ${user.name}`;
-                accountLink.href = '../pages/profile.html'; // Link to profile when logged in
+            if (token && user) {
+                try {
+                    const userData = JSON.parse(user);
+                    accountText.textContent = `Hi, ${userData.name.split(' ')[0]}`; // Show first name
+                    accountLink.title = `Logged in as ${userData.name}`;
+                    accountLink.href = '../pages/dashboard.html'; // Link to dashboard when logged in
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    accountText.textContent = 'Account';
+                    accountLink.title = 'Login or Register';
+                    accountLink.href = '../pages/login.html';
+                }
             } else {
                 accountText.textContent = 'Account';
                 accountLink.title = 'Login or Register';

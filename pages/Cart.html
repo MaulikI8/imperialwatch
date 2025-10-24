@@ -73,9 +73,9 @@
                     <!-- User account actions and cart -->
                     <div class="user-section">
                         <div class="user-actions">
-                            <a href="#" class="user-action">
+                            <a href="login.html" class="user-action" id="accountLink">
                                 <i class="icon-user"></i>
-                                <span>Account</span>
+                                <span id="accountText">Account</span>
                             </a>
                             <a href="Favorites.html" class="user-action">
                                 <i class="icon-heart"></i>
@@ -176,7 +176,7 @@
                             </div>
 
                             <div class="summary-actions">
-                                <button class="btn-primary btn-large" id="checkoutBtn">Proceed to Checkout</button>
+                                <a href="checkout-shipping.html" class="btn-primary btn-large" id="checkoutButton">Proceed to Checkout</a>
                                 <a href="../pages/Product.html" class="btn-secondary btn-large">Continue Shopping</a>
                             </div>
 
@@ -355,5 +355,33 @@
     <!-- JavaScript files -->
     <script src="../JS/home.js"></script>
     <script src="../JS/cart-page.js"></script>
+    
+    <script>
+        // Update account link based on login status
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            const accountLink = document.getElementById('accountLink');
+            const accountText = document.getElementById('accountText');
+            
+            if (token && user) {
+                try {
+                    const userData = JSON.parse(user);
+                    accountText.textContent = `Hi, ${userData.name.split(' ')[0]}`;
+                    accountLink.title = `Logged in as ${userData.name}`;
+                    accountLink.href = 'dashboard.html';
+                } catch (error) {
+                    console.error('Error parsing user data:', error);
+                    accountText.textContent = 'Account';
+                    accountLink.title = 'Login or Register';
+                    accountLink.href = 'login.html';
+                }
+            } else {
+                accountText.textContent = 'Account';
+                accountLink.title = 'Login or Register';
+                accountLink.href = 'login.html';
+            }
+        });
+    </script>
 </body>
 </html>
