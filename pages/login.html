@@ -181,21 +181,26 @@
     </footer>
 
     <script>
-        // Password toggle functionality
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleBtn = document.querySelector('.password-toggle i');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleBtn.classList.remove('fa-eye');
-                toggleBtn.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleBtn.classList.remove('fa-eye-slash');
-                toggleBtn.classList.add('fa-eye');
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle functionality
+            function togglePassword() {
+                const passwordInput = document.getElementById('password');
+                const toggleBtn = document.querySelector('.password-toggle i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    toggleBtn.classList.remove('fa-eye');
+                    toggleBtn.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    toggleBtn.classList.remove('fa-eye-slash');
+                    toggleBtn.classList.add('fa-eye');
+                }
             }
-        }
+
+            // Make function globally available
+            window.togglePassword = togglePassword;
 
         // Form submission
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -257,17 +262,21 @@
             }
         });
 
-        // Show message function
-        function showMessage(message, type) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.textContent = message;
-            messageDiv.className = `message ${type}`;
-            messageDiv.style.display = 'block';
-            
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
-        }
+            // Show message function
+            function showMessage(message, type) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.textContent = message;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            // Make function globally available
+            window.showMessage = showMessage;
+        });
     </script>
 </body>
 </html>
