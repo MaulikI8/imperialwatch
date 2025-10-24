@@ -199,8 +199,21 @@
                 }
             }
 
-            // Make function globally available
+            // Show message function
+            function showMessage(message, type) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.textContent = message;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            // Make functions globally available
             window.togglePassword = togglePassword;
+            window.showMessage = showMessage;
 
         // Form submission
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -261,21 +274,6 @@
                 submitBtn.innerHTML = '<span class="btn-text">Sign In</span><i class="fas fa-arrow-right btn-icon"></i>';
             }
         });
-
-            // Show message function
-            function showMessage(message, type) {
-                const messageDiv = document.getElementById('message');
-                messageDiv.textContent = message;
-                messageDiv.className = `message ${type}`;
-                messageDiv.style.display = 'block';
-                
-                setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                }, 5000);
-            }
-
-            // Make function globally available
-            window.showMessage = showMessage;
         });
     </script>
 </body>

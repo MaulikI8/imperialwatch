@@ -243,6 +243,22 @@
             }
         }
 
+            // Show message function
+            function showMessage(message, type) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.textContent = message;
+                messageDiv.className = `message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 5000);
+            }
+
+            // Make functions globally available
+            window.togglePassword = togglePassword;
+            window.showMessage = showMessage;
+
         // Form submission
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -322,22 +338,6 @@
                 submitBtn.innerHTML = '<span class="btn-text">Create Account</span><i class="fas fa-arrow-right btn-icon"></i>';
             }
         });
-
-            // Show message function
-            function showMessage(message, type) {
-                const messageDiv = document.getElementById('message');
-                messageDiv.textContent = message;
-                messageDiv.className = `message ${type}`;
-                messageDiv.style.display = 'block';
-                
-                setTimeout(() => {
-                    messageDiv.style.display = 'none';
-                }, 5000);
-            }
-
-            // Make functions globally available
-            window.togglePassword = togglePassword;
-            window.showMessage = showMessage;
         });
     </script>
 </body>
