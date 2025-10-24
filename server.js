@@ -24,11 +24,17 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-            fontSrc: ["'self'", "https://fonts.gstatic.com"],
-            scriptSrc: ["'self'", "https://js.stripe.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
             imgSrc: ["'self'", "data:", "https:"],
-            connectSrc: ["'self'", "https://api.stripe.com"]
+            connectSrc: ["'self'", "https://api.stripe.com"],
+            baseUri: ["'self'"],
+            formAction: ["'self'"],
+            frameAncestors: ["'self'"],
+            objectSrc: ["'none'"],
+            scriptSrcAttr: ["'none'"],
+            upgradeInsecureRequests: []
         }
     }
 }));
@@ -140,17 +146,44 @@ function initializeDatabase() {
         last_login DATETIME
     )`);
 
-    // Create admin user if not exists
-    db.get("SELECT COUNT(*) as count FROM customers WHERE role = 'admin'", (err, row) => {
-        if (err) {
-            console.error('Error checking admin user:', err);
-        } else if (row.count === 0) {
-            const adminPassword = bcrypt.hashSync('admin123', 10);
-            db.run(`INSERT INTO customers (name, email, password, role) VALUES (?, ?, ?, ?)`, 
-                ['Admin User', 'admin@imperialwatches.com', adminPassword, 'admin']);
-            console.log('Admin user created: admin@imperialwatches.com / admin123');
+    // Update existing customers table to add new columns if they don't exist
+    db.run(`ALTER TABLE customers ADD COLUMN password TEXT`, (err) => {
+        if (err && !err.message.includes('duplicate column name')) {
+            console.error('Error adding password column:', err);
         }
     });
+    
+    db.run(`ALTER TABLE customers ADD COLUMN role TEXT DEFAULT 'customer'`, (err) => {
+        if (err && !err.message.includes('duplicate column name')) {
+            console.error('Error adding role column:', err);
+        }
+    });
+    
+    db.run(`ALTER TABLE customers ADD COLUMN is_active BOOLEAN DEFAULT 1`, (err) => {
+        if (err && !err.message.includes('duplicate column name')) {
+            console.error('Error adding is_active column:', err);
+        }
+    });
+    
+    db.run(`ALTER TABLE customers ADD COLUMN last_login DATETIME`, (err) => {
+        if (err && !err.message.includes('duplicate column name')) {
+            console.error('Error adding last_login column:', err);
+        }
+    });
+
+    // Create admin user if not exists
+    setTimeout(() => {
+        db.get("SELECT COUNT(*) as count FROM customers WHERE role = 'admin'", (err, row) => {
+            if (err) {
+                console.error('Error checking admin user:', err);
+            } else if (row.count === 0) {
+                const adminPassword = bcrypt.hashSync('admin123', 10);
+                db.run(`INSERT INTO customers (name, email, password, role) VALUES (?, ?, ?, ?)`, 
+                    ['Admin User', 'admin@imperialwatches.com', adminPassword, 'admin']);
+                console.log('Admin user created: admin@imperialwatches.com / admin123');
+            }
+        });
+    }, 1000);
 
     // Create orders table
     db.run(`CREATE TABLE IF NOT EXISTS orders (
