@@ -4,6 +4,68 @@
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Fix header positioning */
+.auth-page .modern-header {
+    position: relative;
+    z-index: 100;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-page .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.auth-page .main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.auth-page .main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-page .main-nav a:hover {
+    color: #d4af37;
+}
+
+.auth-page .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.auth-page .user-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.auth-page .user-action:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.auth-page .user-action.active {
+    background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+    color: #2c3e50;
 }
 
 .auth-main {
@@ -63,11 +125,14 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 3;
 }
 
 .brand-logo i {
     font-size: 2.5rem;
     color: #2c3e50;
+    flex-shrink: 0;
 }
 
 .brand-logo h1 {
@@ -76,6 +141,7 @@
     font-weight: 700;
     color: #2c3e50;
     margin: 0;
+    line-height: 1.2;
 }
 
 .auth-branding h2 {
@@ -84,6 +150,9 @@
     font-weight: 600;
     color: #2c3e50;
     margin-bottom: 1rem;
+    line-height: 1.2;
+    position: relative;
+    z-index: 3;
 }
 
 .auth-branding p {
@@ -213,6 +282,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    align-items: start;
+}
+
+.form-row .form-group {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .form-group {
@@ -249,6 +326,16 @@
     background: white;
     transition: all 0.3s ease;
     outline: none;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.input-wrapper input::placeholder {
+    color: #6c757d;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .input-wrapper input:focus {
@@ -495,16 +582,25 @@
     border-color: #b3d9ff;
 }
 
-/* Header Overrides for Auth Pages */
-.auth-page .modern-header {
-    background: rgba(26, 26, 26, 0.95);
+/* Additional fixes for better layout */
+.auth-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 600px;
 }
 
-.auth-page .user-action.active {
-    background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
-    color: #2c3e50;
+.auth-form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding: 1rem 0;
 }
 
 /* Responsive Design */
@@ -513,20 +609,24 @@
         grid-template-columns: 1fr;
         margin: 1rem;
         border-radius: 15px;
+        max-height: none;
     }
     
     .auth-branding {
         padding: 2rem;
         order: 2;
+        min-height: auto;
     }
     
     .auth-form-container {
         padding: 2rem;
         order: 1;
+        overflow-y: visible;
     }
     
     .form-row {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .brand-logo h1 {
@@ -550,6 +650,19 @@
     .watch-ring i {
         font-size: 2rem;
     }
+    
+    .auth-page .main-nav {
+        display: none;
+    }
+    
+    .auth-page .header-actions {
+        gap: 0.5rem;
+    }
+    
+    .auth-page .user-action {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -568,5 +681,28 @@
     
     .auth-branding h2 {
         font-size: 1.5rem;
+    }
+    
+    .input-wrapper input {
+        padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .input-icon {
+        left: 0.8rem;
+    }
+    
+    .password-toggle {
+        right: 0.8rem;
+    }
+    
+    .auth-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .social-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 }
