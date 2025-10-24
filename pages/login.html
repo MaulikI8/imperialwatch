@@ -213,32 +213,38 @@
             showMessage('Checking your credentials...', 'loading');
 
             try {
-                // For demo purposes, we'll check if the email exists in our database
-                // In a real app, you'd verify the password with a proper authentication system
+                // Use new authentication endpoint
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
                 
-                // Get all customers to check if email exists
-                const response = await fetch('/api/customers');
+                const data = await response.json();
                 
-                if (response.ok) {
-                    const customers = await response.json();
-                    const customer = customers.find(c => c.email === email);
+                if (response.ok && data.success) {
+                    // Store authentication data
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
                     
-                    if (customer) {
-                        // Email exists - simulate successful login
-                        showMessage(`Welcome back, ${customer.name}!`, 'success');
-                        
-                        // Store customer info in localStorage for demo
-                        localStorage.setItem('loggedInUser', JSON.stringify(customer));
-                        
-                        // Redirect to profile page after 2 seconds
+                    // Check if user is admin
+                    if (data.user.role === 'admin') {
+                        localStorage.setItem('adminToken', data.token);
+                        localStorage.setItem('adminUser', JSON.stringify(data.user));
+                        showMessage('Welcome back, Admin!', 'success');
                         setTimeout(() => {
-                            window.location.href = 'profile.html';
-                        }, 2000);
+                            window.location.href = 'admin-dashboard.html';
+                        }, 1500);
                     } else {
-                        showMessage('Email not found. Please register first or check your email address.', 'error');
+                        showMessage('Login successful!', 'success');
+                        setTimeout(() => {
+                            window.location.href = '../html/WATCHthis.html';
+                        }, 1500);
                     }
                 } else {
-                    showMessage('Login failed. Please try again.', 'error');
+                    showMessage(data.error || 'Login failed. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Login error:', error);

@@ -8,15 +8,97 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const cors = require('cors');
-const stripe = require('stripe')('sk_test_YOUR_STRIPE_SECRET_KEY_HERE'); // Replace with your actual test key
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const { body, validationResult } = require('express-validator');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'sk_test_YOUR_STRIPE_SECRET_KEY_HERE'); // Your actual Stripe secret key
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// Security Middleware
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com"],
+            scriptSrc: ["'self'", "https://js.stripe.com"],
+            imgSrc: ["'self'", "data:", "https:"],
+            connectSrc: ["'self'", "https://api.stripe.com"]
+        }
+    }
+}));
+
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // limit each IP to 5 login attempts per windowMs
+    message: 'Too many login attempts, please try again later.',
+    skipSuccessfulRequests: true
+});
+
+app.use('/api/', limiter);
+app.use('/api/auth/', authLimiter);
+
+// CORS Configuration
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    credentials: true
+}));
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static('.')); // Serve static files
+
+// Authentication Middleware
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ error: 'Access token required' });
+    }
+
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ error: 'Invalid or expired token' });
+        }
+        req.user = user;
+        next();
+    });
+};
+
+// Admin Middleware
+const requireAdmin = (req, res, next) => {
+    if (!req.user || req.user.role !== 'admin') {
+        return res.status(403).json({ error: 'Admin access required' });
+    }
+    next();
+};
+
+// Input Validation Middleware
+const validateInput = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ 
+            error: 'Validation failed', 
+            details: errors.array() 
+        });
+    }
+    next();
+};
 
 // Database setup
 const db = new sqlite3.Database('./database/watches.db', (err) => {
@@ -44,15 +126,31 @@ function initializeDatabase() {
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
 
-    // Create customers table
+    // Create customers table with authentication
     db.run(`CREATE TABLE IF NOT EXISTS customers (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
         phone TEXT,
         address TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        role TEXT DEFAULT 'customer',
+        is_active BOOLEAN DEFAULT 1,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        last_login DATETIME
     )`);
+
+    // Create admin user if not exists
+    db.get("SELECT COUNT(*) as count FROM customers WHERE role = 'admin'", (err, row) => {
+        if (err) {
+            console.error('Error checking admin user:', err);
+        } else if (row.count === 0) {
+            const adminPassword = bcrypt.hashSync('admin123', 10);
+            db.run(`INSERT INTO customers (name, email, password, role) VALUES (?, ?, ?, ?)`, 
+                ['Admin User', 'admin@imperialwatches.com', adminPassword, 'admin']);
+            console.log('Admin user created: admin@imperialwatches.com / admin123');
+        }
+    });
 
     // Create orders table
     db.run(`CREATE TABLE IF NOT EXISTS orders (
@@ -331,9 +429,92 @@ app.get('/api/search', (req, res) => {
     });
 });
 
-// Get all customers (for login verification)
-app.get('/api/customers', (req, res) => {
-    db.all('SELECT * FROM customers ORDER BY created_at DESC', (err, rows) => {
+// Authentication endpoints
+app.post('/api/auth/register', [
+    body('name').trim().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
+    body('email').isEmail().normalizeEmail().withMessage('Valid email required'),
+    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+    body('phone').optional().isMobilePhone().withMessage('Valid phone number required')
+], validateInput, (req, res) => {
+    const { name, email, password, phone, address } = req.body;
+    
+    // Check if user already exists
+    db.get('SELECT id FROM customers WHERE email = ?', [email], (err, existingUser) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        
+        if (existingUser) {
+            return res.status(400).json({ error: 'Email already registered' });
+        }
+        
+        // Hash password
+        const hashedPassword = bcrypt.hashSync(password, 10);
+        
+        // Create user
+        db.run(`INSERT INTO customers (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)`,
+            [name, email, hashedPassword, phone, address], function(err) {
+                if (err) {
+                    return res.status(500).json({ error: 'Failed to create user' });
+                }
+                
+                // Generate JWT token
+                const token = jwt.sign(
+                    { id: this.lastID, email, role: 'customer' },
+                    JWT_SECRET,
+                    { expiresIn: '24h' }
+                );
+                
+                res.json({
+                    success: true,
+                    token,
+                    user: { id: this.lastID, name, email, role: 'customer' }
+                });
+            });
+    });
+});
+
+app.post('/api/auth/login', [
+    body('email').isEmail().normalizeEmail().withMessage('Valid email required'),
+    body('password').notEmpty().withMessage('Password required')
+], validateInput, (req, res) => {
+    const { email, password } = req.body;
+    
+    db.get('SELECT * FROM customers WHERE email = ? AND is_active = 1', [email], (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        
+        if (!user || !bcrypt.compareSync(password, user.password)) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+        
+        // Update last login
+        db.run('UPDATE customers SET last_login = CURRENT_TIMESTAMP WHERE id = ?', [user.id]);
+        
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: user.id, email: user.email, role: user.role },
+            JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+        
+        res.json({
+            success: true,
+            token,
+            user: { 
+                id: user.id, 
+                name: user.name, 
+                email: user.email, 
+                role: user.role 
+            }
+        });
+    });
+});
+
+// Get all customers (admin only)
+app.get('/api/customers', authenticateToken, requireAdmin, (req, res) => {
+    db.all('SELECT id, name, email, phone, address, role, is_active, created_at, last_login FROM customers ORDER BY created_at DESC', (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -392,9 +573,79 @@ app.post('/api/customers', (req, res) => {
     });
 });
 
-// Create new order
-app.post('/api/orders', (req, res) => {
-    const { customer_id, items } = req.body;
+// Admin Dashboard endpoints
+app.get('/api/admin/dashboard', authenticateToken, requireAdmin, (req, res) => {
+    const queries = [
+        'SELECT COUNT(*) as total_orders FROM orders',
+        'SELECT COUNT(*) as total_customers FROM customers WHERE role = "customer"',
+        'SELECT SUM(total_amount) as total_revenue FROM orders WHERE status = "completed"',
+        'SELECT COUNT(*) as pending_orders FROM orders WHERE status = "pending"'
+    ];
+    
+    Promise.all(queries.map(query => new Promise((resolve, reject) => {
+        db.get(query, (err, row) => {
+            if (err) reject(err);
+            else resolve(row);
+        });
+    }))).then(results => {
+        res.json({
+            total_orders: results[0].total_orders,
+            total_customers: results[1].total_customers,
+            total_revenue: results[2].total_revenue || 0,
+            pending_orders: results[3].pending_orders
+        });
+    }).catch(err => {
+        res.status(500).json({ error: err.message });
+    });
+});
+
+app.get('/api/admin/orders', authenticateToken, requireAdmin, (req, res) => {
+    const { page = 1, limit = 10, status } = req.query;
+    const offset = (page - 1) * limit;
+    
+    let query = `
+        SELECT o.*, c.name as customer_name, c.email as customer_email 
+        FROM orders o 
+        JOIN customers c ON o.customer_id = c.id
+    `;
+    let params = [];
+    
+    if (status) {
+        query += ' WHERE o.status = ?';
+        params.push(status);
+    }
+    
+    query += ' ORDER BY o.created_at DESC LIMIT ? OFFSET ?';
+    params.push(parseInt(limit), parseInt(offset));
+    
+    db.all(query, params, (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json(rows);
+    });
+});
+
+app.put('/api/admin/orders/:id/status', authenticateToken, requireAdmin, [
+    body('status').isIn(['pending', 'processing', 'shipped', 'delivered', 'cancelled']).withMessage('Invalid status')
+], validateInput, (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+    
+    db.run('UPDATE orders SET status = ? WHERE id = ?', [status, id], function(err) {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({ success: true, message: 'Order status updated' });
+    });
+});
+
+// Create new order (requires authentication)
+app.post('/api/orders', authenticateToken, (req, res) => {
+    const { items } = req.body;
+    const customer_id = req.user.id;
     
     if (!customer_id || !items || items.length === 0) {
         res.status(400).json({ error: 'Customer ID and items are required' });
@@ -520,7 +771,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
         
         // Create payment intent
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: Math.round(amount * 100), // Convert to cents
+            amount: amount, // Amount is already in cents from frontend
             currency: currency,
             metadata: {
                 customer_id: customer_id || 'anonymous',

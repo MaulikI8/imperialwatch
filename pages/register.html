@@ -240,29 +240,39 @@
                     address: formData.address
                 };
 
-                // Make API call to create customer
-                const response = await fetch('/api/customers', {
+                // Use new registration endpoint
+                const response = await fetch('/api/auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(customerData)
+                    body: JSON.stringify({
+                        name: customerData.name,
+                        email: customerData.email,
+                        password: formData.password,
+                        phone: customerData.phone,
+                        address: customerData.address
+                    })
                 });
 
-                if (response.ok) {
-                    const customer = await response.json();
-                    showMessage(`Account created successfully! Welcome ${customer.name}!`, 'success');
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    // Store authentication data
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    showMessage(`Account created successfully! Welcome ${data.user.name}!`, 'success');
                     
                     // Clear form
                     document.getElementById('registerForm').reset();
                     
-                    // Redirect to login after 2 seconds
+                    // Redirect to home after 2 seconds
                     setTimeout(() => {
-                        window.location.href = 'login.html';
+                        window.location.href = '../html/WATCHthis.html';
                     }, 2000);
                 } else {
-                    const error = await response.json();
-                    showMessage(`Registration failed: ${error.error}`, 'error');
+                    showMessage(data.error || 'Registration failed. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Registration error:', error);
