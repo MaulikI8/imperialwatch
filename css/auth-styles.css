@@ -295,7 +295,9 @@
 
 .input-icon {
     position: absolute;
-    left: 1rem;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
     color: #9ca3af;
     z-index: 2;
     font-size: 1rem;
@@ -303,7 +305,7 @@
 
 .input-wrapper input {
     width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
+    padding: 1rem 1rem 1rem 2.75rem;
     border: 2px solid #e5e7eb;
     border-radius: 12px;
     font-size: 1rem;
@@ -326,7 +328,9 @@
 
 .password-toggle {
     position: absolute;
-    right: 1rem;
+    right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     color: #9ca3af;
@@ -645,15 +649,15 @@
     
     .input-wrapper input {
         padding: 0.875rem 0.875rem 0.875rem 2.5rem;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     
     .input-icon {
-        left: 0.875rem;
+        left: 0.75rem;
     }
     
     .password-toggle {
-        right: 0.875rem;
+        right: 0.75rem;
     }
     
     .auth-btn {
