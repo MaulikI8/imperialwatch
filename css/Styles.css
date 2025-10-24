@@ -477,6 +477,27 @@ p {
     transform: translateY(-2px);
 }
 
+/* Prevent color change for account link when logged in */
+.user-action#accountLink:hover {
+    background: transparent;
+    transform: none;
+}
+
+.user-action#accountLink:hover span {
+    color: inherit;
+}
+
+/* Style for logged-in account link */
+.user-action#accountLink {
+    color: #d4af37;
+    font-weight: 600;
+}
+
+.user-action#accountLink span {
+    color: #d4af37;
+    font-weight: 600;
+}
+
 .user-action span {
     font-size: 12px;
     margin-top: 4px;
