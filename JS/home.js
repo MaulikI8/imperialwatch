@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Global cart variables - using localStorage for persistence
-let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+let cartItems = [];
 let cartCount = 0;
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -32,6 +32,7 @@ function initCart() {
         if (e.target.classList.contains('add-to-cart') || 
             e.target.closest('.add-to-cart')) {
             e.preventDefault();
+            console.log('Add to cart clicked');
             addToCart(e.target);
         }
         
@@ -39,6 +40,7 @@ function initCart() {
         if (e.target.classList.contains('buy-now') || 
             e.target.closest('.buy-now')) {
             e.preventDefault();
+            console.log('Buy now clicked');
             buyNow(e.target);
         }
     });
@@ -64,12 +66,16 @@ function addToCart(button) {
     const productPrice = productCard.querySelector('.current-price')?.textContent || productCard.querySelector('.product-price')?.textContent;
     const productImage = productCard.querySelector('.product-image img').src;
     
-    const existingItem = cartItems.find(item => item.name === productName);
+    // Load existing cart
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Check if item already exists
+    const existingItem = cart.find(item => item.name === productName);
     
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cartItems.push({
+        cart.push({
             id: Date.now(),
             name: productName,
             price: productPrice,
@@ -78,15 +84,12 @@ function addToCart(button) {
         });
     }
     
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    // Save to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    
     updateCartCount();
     showNotification(`${productName} added to cart!`, 'success');
-    
-    // Dispatch event for React components
-    window.dispatchEvent(new CustomEvent('cartUpdated'));
-    
-    // Add animation to cart icon
-    animateCartIcon();
 }
 
 // Buy now functionality
@@ -97,7 +100,7 @@ function buyNow(button) {
     const productImage = productCard.querySelector('.product-image img').src;
     
     // Clear cart and add this item
-    cartItems = [{
+    const cart = [{
         id: Date.now(),
         name: productName,
         price: productPrice,
@@ -105,7 +108,8 @@ function buyNow(button) {
         quantity: 1
     }];
     
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartItems', JSON.stringify(cart));
     updateCartCount();
     
     // Redirect to checkout
@@ -113,7 +117,9 @@ function buyNow(button) {
 }
 
 function updateCartCount() {
-    cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    
     const cartCountElement = document.getElementById('cartCount');
     if (cartCountElement) {
         cartCountElement.textContent = cartCount;
@@ -258,11 +264,10 @@ function hideSearchSuggestions() {
 }
 
 function performSearch(query) {
-    showNotification(`Searching for "${query}"...`, 'info');
-    // In real app, this would redirect to search results page
-    setTimeout(() => {
-        showNotification(`Found 12 results for "${query}"`, 'success');
-    }, 1000);
+    if (query.trim()) {
+        // Redirect to product page with search query
+        window.location.href = `../pages/Product.html?search=${encodeURIComponent(query)}`;
+    }
 }
 
 // Newsletter
@@ -350,9 +355,9 @@ function initAnimations() {
         
         element.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
-        });
     });
-    
+});
+
     // Add shimmer effect to buttons
     document.querySelectorAll('.btn-primary').forEach(button => {
         button.addEventListener('mouseenter', function() {
